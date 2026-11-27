@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Валя Васильева — продуктовый дизайнер.">
+<meta name="theme-color" content="#141414">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon.png" sizes="64x64">
+<title>Валя Васильева · Портфолио</title>
+<style>
+  .site-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    color: #f4f4f4;
+    background: radial-gradient(ellipse at center, #242424, #111);
+    font-family: system-ui, sans-serif;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .is-loading .site-loader { opacity: 1; visibility: visible; pointer-events: auto; }
+  .site-loader-counter {
+    display: flex;
+    align-items: baseline;
+    gap: .12em;
+    font-size: clamp(76px, 19vw, 176px);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -.075em;
+    font-variant-numeric: tabular-nums;
+  }
+  .site-loader-counter small { color: #a3a3a3; font-size: .24em; letter-spacing: 0; }
+  @media (prefers-reduced-motion: no-preference) {
+    .site-loader { transition: opacity .22s ease, visibility .22s; }
+  }
+</style>
+<script>
+  (() => {
+    const root = document.documentElement;
+    root.classList.add('is-loading');
+    window.portfolioReady = new Promise(resolve => {
+      const finish = () => {
+        clearTimeout(timeout);
+        root.classList.remove('is-loading');
+        resolve();
+      };
+      const timeout = setTimeout(finish, 3000);
+      document.addEventListener('DOMContentLoaded', async () => {
+        if (!root.classList.contains('is-loading')) return;
+        const counter = document.querySelector('.site-loader-count');
+        const images = [...document.querySelectorAll('.signature img, .folder-preview img')];
+        let ready = 1;
+        const update = () => {
+          counter.textContent = String(Math.round(100 * ready / (images.length + 1))).padStart(2, '0');
+        };
+        update();
+        await Promise.all(images.map(async image => {
+          await image.decode().catch(() => {});
+          ready += 1;
+          update();
+        }));
+        finish();
+      }, { once: true });
+    });
+  })();
+</script>
+<link rel="stylesheet" href="portfolio-text-centered.css">
+<script src="portfolio-motion.js" defer></script>
+
+<script src="portfolio-music.js" type="module"></script>
+</head>
+<body>
+<div class="site-loader" role="status" aria-label="Загрузка портфолио / Loading portfolio">
+  <div class="site-loader-counter" aria-hidden="true"><span class="site-loader-count">00</span><small>%</small></div>
+</div>
+<aside class="profile">
+  <div class="profile-disclosure">
+  <button type="button" class="photo-toggle" aria-controls="profile-card" aria-expanded="true" aria-label="Свернуть профиль / Collapse profile"></button>
+  <div class="profile-reveal" id="profile-card">
+  <div class="profile-card">
+  <div class="signature"><img src="previews/portrait-384.webp" srcset="previews/portrait-384.webp 384w, previews/portrait-640.webp 640w, valya-winter-portrait.webp 853w" sizes="(max-width: 760px) 86px, (max-width: 1020px) 350px, 320px" fetchpriority="high" alt="Валя Васильева" width="853" height="1280" style="display:block;width:100%;height:100%;min-height:0;object-fit:cover;object-position:57% 48%"></div>
+  <div class="identity">
+    <h1 data-en="Valya Vasilyeva">Валя Васильева</h1>
+    <p data-en="Product Designer">Продуктовый дизайнер</p>
+  </div>
+  </div>
+  </div>
+  </div>
+  <section class="profile-player" aria-label="Музыкальный плеер / Music player">
+    <h2 data-en="For the vibe">Для вайба</h2>
+    <div class="profile-track">
+      <div class="profile-track-meta">
+        <strong>Jingle Bells</strong>
+        <div class="profile-track-marquee">
+          <div class="profile-track-ticker">
+            <span>Frank Sinatra</span>
+            <span aria-hidden="true">Frank Sinatra</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <audio class="profile-audio" autoplay muted></audio>
+    <div class="profile-music-controls">
+      <button type="button" class="profile-music-toggle" aria-label="Воспроизвести / Play">
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path class="music-play" d="M6 3.9v12.2L16 10z"/><path class="music-pause" d="M5 4h3v12H5zm7 0h3v12h-3z"/></svg>
+      </button>
+      <button type="button" class="profile-music-mute" aria-label="Звук / Sound" aria-pressed="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path class="music-sound-off" d="m16 9 6 6m0-6-6 6"/><path class="music-sound-on" d="M16 9a4 4 0 0 1 0 6m3-9a8 8 0 0 1 0 12"/></svg>
+      </button>
+      <input type="range" class="profile-music-volume" min="0" max="100" value="15" aria-label="Громкость / Volume">
+    </div>
+  </section>
+</aside>
+<main class="stage">
+  <button type="button" class="profile-music-mute screen-music-mute page-music-mute" aria-label="Звук / Sound" aria-pressed="false" hidden></button>
+  <div class="holiday-garland" id="holiday-garland" aria-hidden="true">
+    <svg viewBox="0 0 1200 47" preserveAspectRatio="xMidYMid slice" focusable="false">
+      <defs>
+        <filter id="garland-mobile-glow" filterUnits="userSpaceOnUse" x="-24" y="-14" width="48" height="48">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
+          <feComponentTransfer result="halo">
+            <feFuncA type="linear" slope="5"/>
+          </feComponentTransfer>
+          <feMerge>
+            <feMergeNode in="halo"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <path class="garland-wire" d="M0 6 Q200 30 400 6 Q600 30 800 6 Q1000 30 1200 6"/>
+      <g transform="translate(21 8.4) rotate(6)" style="--bulb:#5144ff;--core:#b4c7ff;--delay:-0.0s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(64 12.5) rotate(5)" style="--bulb:#ffae12;--core:#fff6a8;--delay:-0.6s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(107 15.4) rotate(3)" style="--bulb:#ff293f;--core:#ffb7ba;--delay:-1.2s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(150 17.2) rotate(2)" style="--bulb:#00ee86;--core:#c0ffda;--delay:-1.8s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(193 18.0) rotate(0)" style="--bulb:#5144ff;--core:#b4c7ff;--delay:-2.4s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(236 17.6) rotate(-1)" style="--bulb:#ffae12;--core:#fff6a8;--delay:-3.0s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(279 16.1) rotate(-3)" style="--bulb:#ff293f;--core:#ffb7ba;--delay:-3.6s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(322 13.5) rotate(-4)" style="--bulb:#00ee86;--core:#c0ffda;--delay:-0.0s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(365 9.8) rotate(-6)" style="--bulb:#5144ff;--core:#b4c7ff;--delay:-0.6s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(408 6.9) rotate(7)" style="--bulb:#ffae12;--core:#fff6a8;--delay:-1.2s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(451 11.3) rotate(5)" style="--bulb:#ff293f;--core:#ffb7ba;--delay:-1.8s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(494 14.6) rotate(4)" style="--bulb:#00ee86;--core:#c0ffda;--delay:-2.4s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(537 16.8) rotate(2)" style="--bulb:#5144ff;--core:#b4c7ff;--delay:-3.0s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(580 17.9) rotate(1)" style="--bulb:#ffae12;--core:#fff6a8;--delay:-3.6s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(623 17.8) rotate(-1)" style="--bulb:#ff293f;--core:#ffb7ba;--delay:-0.0s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(666 16.7) rotate(-2)" style="--bulb:#00ee86;--core:#c0ffda;--delay:-0.6s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(709 14.4) rotate(-4)" style="--bulb:#5144ff;--core:#b4c7ff;--delay:-1.2s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(752 11.1) rotate(-5)" style="--bulb:#ffae12;--core:#fff6a8;--delay:-1.8s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(795 6.6) rotate(-7)" style="--bulb:#ff293f;--core:#ffb7ba;--delay:-2.4s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(838 10.1) rotate(6)" style="--bulb:#00ee86;--core:#c0ffda;--delay:-3.0s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(881 13.8) rotate(4)" style="--bulb:#5144ff;--core:#b4c7ff;--delay:-3.6s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(924 16.3) rotate(3)" style="--bulb:#ffae12;--core:#fff6a8;--delay:-0.0s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(967 17.7) rotate(1)" style="--bulb:#ff293f;--core:#ffb7ba;--delay:-0.6s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(1010 18.0) rotate(0)" style="--bulb:#00ee86;--core:#c0ffda;--delay:-1.2s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(1053 17.2) rotate(-2)" style="--bulb:#5144ff;--core:#b4c7ff;--delay:-1.8s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(1096 15.2) rotate(-3)" style="--bulb:#ffae12;--core:#fff6a8;--delay:-2.4s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(1139 12.2) rotate(-5)" style="--bulb:#ff293f;--core:#ffb7ba;--delay:-3.0s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+      <g transform="translate(1182 8.1) rotate(-6)" style="--bulb:#00ee86;--core:#c0ffda;--delay:-3.6s"><path class="garland-cap" d="M-1.5 0h3v8h-3z"/><circle class="garland-bulb" cy="10" r="3.5"/></g>
+    </svg>
+  </div>
+  <button type="button" class="garland-toggle" aria-pressed="true" aria-controls="holiday-garland" aria-label="Свет гирлянды / Garland lights" title="Свет гирлянды / Garland lights">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6m-5 3h4m-5-6c0-2-3-2.9-3-6a6 6 0 1 1 12 0c0 3.1-3 4-3 6z"/></svg>
+  </button>
+  <div id="holiday-snow" class="holiday-snow" aria-hidden="true">
+    <div class="snowflakes"></div>
+    <div class="snowbanks"></div>
+  </div>
+  <nav class="home-switch" aria-label="Разделы / Sections">
+    <button type="button" data-home="projects" aria-pressed="true" aria-controls="home-projects" data-en="Projects">Проекты</button>
+    <button type="button" data-home="about" aria-pressed="false" aria-controls="home-about" data-en="About">Обо мне</button>
+  </nav>
+  
+  
+  <div class="home-space" data-active-view="projects" aria-label="Пространство портфолио / Portfolio space" tabindex="0">
+    <div class="home-canvas-position">
+    <div class="home-canvas">
+  <section class="shelf" id="home-projects" aria-label="Проекты / Projects">
+    <div class="folder-grid">
+    <button type="button" class="folder projects" data-folder="projects"><span class="folder-art" aria-hidden="true"><span class="folder-back"></span><span class="folder-preview"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v2"/></svg></span><span class="folder-preview"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v2"/></svg></span><span class="folder-preview"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v2"/></svg></span><span class="folder-front"></span></span><strong data-en="Cases">Кейсы</strong></button>
+    <button type="button" class="folder concepts" data-folder="concepts"><span class="folder-art" aria-hidden="true"><span class="folder-back"></span><span class="folder-preview"><img src="previews/robotaxi.webp" decoding="async" alt="" draggable="false"></span><span class="folder-preview"><img src="previews/bosch.webp" decoding="async" alt="" draggable="false"></span><span class="folder-preview"><img src="previews/zoom.webp" decoding="async" alt="" draggable="false"></span><span class="folder-front"></span></span><strong data-en="Concepts">Концепты</strong></button>
+    <button type="button" class="folder personal" data-folder="personal"><span class="folder-art" aria-hidden="true"><span class="folder-back"></span><span class="folder-preview"><img src="previews/poster-1.webp" decoding="async" alt="" draggable="false"></span><span class="folder-preview"><img src="previews/weve.webp" decoding="async" alt="" draggable="false"></span><span class="folder-preview"><img src="previews/poster-2.webp" decoding="async" alt="" draggable="false"></span><span class="folder-front"></span></span><strong data-en="Personal">Для себя</strong></button>
+    </div>
+  </section>
+  <section class="about-space" id="home-about" aria-label="Обо мне / About">
+    <div class="about-layout">
+      <div class="about-affiliations">
+    <section class="about-group">
+      <h2 class="about-movable" tabindex="0" data-en="Work">Работа</h2>
+      <ul class="work-list">
+        <li><button type="button" class="about-movable logo-trigger" aria-expanded="false" aria-controls="affiliation-central-work"><img class="work-logo central-university" src="central-university.webp" loading="lazy" decoding="async" alt="Центральный университет" width="900" height="900"></button></li>
+        <li><button type="button" class="about-movable logo-trigger" aria-expanded="false" aria-controls="affiliation-impex"><img class="work-logo impex-electro" src="impex-electro.webp" loading="lazy" decoding="async" alt="Импэкс Электро" width="1024" height="238"></button></li>
+      </ul>
+      <article class="about-details" id="affiliation-central-work" aria-labelledby="affiliation-title-central-work" hidden>
+<h2 id="affiliation-title-central-work" data-en="Central University">Центральный университет</h2>
+      <p class="affiliation-description" data-en="I work as a teaching assistant for undergraduate courses. I help instructors run classes, coordinate reviews and give students feedback.">Работаю ассистентом на курсах бакалавриата. Помогаю преподавателям проводить занятия и координирую проверку работ. Даю студентам обратную связь по заданиям.</p>
+      </article>
+      <article class="about-details" id="affiliation-impex" aria-labelledby="affiliation-title-impex" hidden>
+<h2 id="affiliation-title-impex" data-en="Impex Electro">Импэкс Электро</h2>
+      <p class="affiliation-description" data-en="As a graphic designer, I built a modular product listing system in Figma. Reusable components made new listings 3–5 times faster to produce. I also designed marketplace visuals and corporate print materials.">В роли графического дизайнера собрала модульную систему карточек товаров в Figma. Готовые компоненты сократили время подготовки новых карточек в 3–5 раз. Также оформляла материалы для маркетплейсов и корпоративную полиграфию.</p>
+      </article>
+    </section>
+    <section class="about-group">
+      <h2 class="about-movable" tabindex="0" data-en="Education">Учёба</h2>
+      <ul class="education-list">
+        <li><button type="button" class="about-movable logo-trigger education-logo central-study" aria-expanded="false" aria-controls="affiliation-central-study"><img src="education-central-study.webp" loading="lazy" decoding="async" alt="ЦУ"></button></li>
+        <li><button type="button" class="about-movable logo-trigger education-logo design-school" aria-expanded="false" aria-controls="affiliation-hse"><img src="education-design-school.webp" loading="lazy" decoding="async" alt="ШД"></button></li>
+        <li><button type="button" class="about-movable logo-trigger education-logo miit" aria-expanded="false" aria-controls="affiliation-miit"><img src="education-miit.webp" loading="lazy" decoding="async" alt="МИИТ"></button></li>
+        <li><button type="button" class="about-movable logo-trigger education-logo google" aria-expanded="false" aria-controls="affiliation-google"><img src="education-google.webp" loading="lazy" decoding="async" alt="Google"></button></li>
+        <li><button type="button" class="about-movable logo-trigger education-logo vk" aria-expanded="false" aria-controls="affiliation-vk"><img src="education-vk.webp" loading="lazy" decoding="async" alt="VK"></button></li>
+      </ul>
+      <article class="about-details" id="affiliation-central-study" aria-labelledby="affiliation-title-central-study" hidden>
+<h2 id="affiliation-title-central-study" data-en="Central University">Центральный университет</h2>
+      <p class="affiliation-description" data-en="I’m pursuing a master’s degree in Human Experience Design with a focus on product design, researching user journeys, designing interfaces and building prototypes.">Учусь в магистратуре по программе Human Experience Design. Специализируюсь на продуктовом дизайне: исследую пользовательские сценарии, проектирую интерфейсы и собираю прототипы.</p>
+      </article>
+      <article class="about-details" id="affiliation-hse" aria-labelledby="affiliation-title-hse" hidden>
+<h2 id="affiliation-title-hse" data-en="HSE Art and Design School">Высшая школа дизайна НИУ ВШЭ</h2>
+      <p class="affiliation-description" data-en="I completed a year-long course in Digital Design and earned a professional retraining diploma.">Прошла годовой курс «Цифровой дизайн» и получила диплом о профессиональной переподготовке.</p>
+      </article>
+      <article class="about-details" id="affiliation-miit" aria-labelledby="affiliation-title-miit" hidden>
+<h2 id="affiliation-title-miit" data-en="Russian University of Transport">Российский университет транспорта</h2>
+      <p class="affiliation-description" data-en="I graduated in Economic Security and qualified as an economist.">Окончила программу «Экономическая безопасность» и получила квалификацию экономиста.</p>
+      </article>
+      <article class="about-details" id="affiliation-google" aria-labelledby="affiliation-title-google" hidden>
+<h2 id="affiliation-title-google" data-en="Google · Coursera">Google · Coursera</h2>
+      <p class="affiliation-description" data-en="I studied UX design through Google’s program on Coursera.">Изучала UX-дизайн по программе Google на Coursera.</p>
+      </article>
+      <article class="about-details" id="affiliation-vk" aria-labelledby="affiliation-title-vk" hidden>
+<h2 id="affiliation-title-vk" data-en="VK">VK</h2>
+      <p class="affiliation-description" data-en="I completed the courses «New Media: SMM and Digital Marketing» and «Product Management».">Прошла курсы «Новые медиа: SMM и digital-маркетинг» и «Продакт-менеджмент».</p>
+      </article>
+    </section>
+      </div>
+      <div class="about-intro">
+        <article class="about-movable about-story" tabindex="0">
+          <p data-en="I’m Valya Vasilyeva, a product designer. I’m studying for a master’s in Human Experience Design at Central University, where I also work as a teaching assistant. I help run classes and give students feedback on their work.">Я Валя Васильева, продуктовый дизайнер. Учусь в магистратуре Центрального университета на программе Human Experience Design. Там же работаю ассистентом на бакалавриате: помогаю проводить занятия и даю студентам обратную связь по их работам.</p>
+          <p data-en="I’m especially interested in interfaces for services and devices. I start by figuring out what people want to do and where they get stuck. Then I sketch the flow, build an interactive prototype, and decide what to test to see whether the change helps people complete the task and supports the product goal.">Больше всего меня интересуют интерфейсы сервисов и устройств. Сначала разбираюсь, что человек хочет сделать и где у него возникают трудности. Затем проектирую сценарий, собираю интерактивный прототип и определяю, что проверить: стало ли проще выполнить задачу и помогает ли решение достичь цели продукта.</p>
+          <p data-en="My background in graphic design helps me draw attention to what matters on a screen. I also enter poster competitions, where I experiment with how typography and composition can change the way the same message comes across.">Опыт в графическом дизайне помогает мне выделять главное на экране. Ещё я участвую в конкурсах плакатов и экспериментирую с тем, как типографика и композиция меняют восприятие одной и той же идеи.</p>
+          <dl class="about-experience">
+            <div>
+              <dt data-en="Graphic design">Графический дизайн</dt>
+              <dd data-en="1.5 years">1,5 года</dd>
+            </div>
+            <div>
+              <dt data-en="Product design">Продуктовый дизайн</dt>
+              <dd data-en="1 year">1 год</dd>
+            </div>
+          </dl>
+        </article>
+      </div>
+      <button type="button" class="about-movable about-resume" aria-label="Открыть резюме / Open résumé" aria-haspopup="dialog" aria-controls="resume-viewer">
+        <img src="about/resume.webp?v=8ce5a860c8" alt="" loading="lazy" draggable="false">
+      </button>
+    </div>
+  </section>
+    </div>
+  </div>
+  </div>
+    <div class="home-zoom zoom" role="group" aria-label="Масштаб / Zoom">
+      <button type="button" data-home-zoom="-1" aria-label="Отдалить / Zoom out">−</button>
+      <button type="button" data-home-zoom="1" aria-label="Приблизить / Zoom in">+</button>
+    </div>
+  <dialog id="resume-viewer" class="resume-viewer" aria-label="Резюме / Résumé">
+    <div class="resume-viewer-layout" tabindex="-1" autofocus>
+      <div class="resume-tools">
+        <button type="button" data-resume-zoom="-1" aria-label="Отдалить / Zoom out"></button>
+        <button type="button" data-resume-zoom="1" aria-label="Приблизить / Zoom in"></button>
+        <a href="about/resume.pdf?v=8ce5a860c8" download="Васильева В_CV.pdf" data-en="Download PDF">Скачать PDF</a>
+        <form method="dialog"><button type="submit" aria-label="Закрыть / Close"></button></form>
+      </div>
+      <div class="resume-canvas">
+        <img class="resume-page" width="595" height="1233" src="about/resume.svg" alt="Резюме Вали Васильевой / Valya Vasilyeva’s résumé" loading="lazy" draggable="false">
+      </div>
+      <button type="button" class="profile-music-mute screen-music-mute" aria-label="Звук / Sound" aria-pressed="false"></button>
+    </div>
+  </dialog>
+  <template id="case-lock">
+    <span class="case-lock-content">
+      <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v2"/></svg>
+      <span>Скоро в портфолио</span>
+    </span>
+  </template>
+  <template id="concepts-files">
+    <span data-media="concepts/robotaxi.webp" data-poster="concepts/robotaxi.webp" data-width="2048" data-height="1152" data-info="info-robotaxi"></span>
+    <span data-media="concepts/bosch.webp" data-poster="concepts/bosch.webp" data-width="2048" data-height="2048" data-info="info-bosch"></span>
+    <span data-media="concepts/home-shot.webp" data-poster="concepts/home-shot.webp" data-width="2048" data-height="1152" data-info="info-home-shot"></span>
+    <span data-media="concepts/zoom.webp" data-poster="concepts/zoom.webp" data-width="2048" data-height="1330" data-info="info-zoom"></span>
+    <span data-media="concepts/axya.mp4" data-poster="concepts/axya.webp" data-width="1440" data-height="1080" data-info="info-axya"></span>
+    <span data-media="concepts/yandex-go.mp4" data-poster="concepts/yandex-go.webp" data-width="1440" data-height="1440" data-info="info-yandex-go"></span>
+    <span data-media="concepts/nike.mp4" data-poster="concepts/nike.webp" data-width="1440" data-height="746" data-info="info-nike"></span>
+    <span data-media="concepts/shot.mp4" data-poster="concepts/shot.webp" data-width="1440" data-height="900" data-info="info-shot"></span>
+    <span data-media="concepts/recording.mp4" data-poster="concepts/recording.webp" data-width="662" data-height="1440" data-info="info-recording"></span>
+  </template>
+  <template id="info-robotaxi">
+    <h2 data-en="Robotaxi">Роботакси</h2>
+    <p data-en="A robotaxi ride interface for tracking the car and adjusting cabin climate.">Концепт интерфейса поездки на роботакси. В приложении можно следить за машиной и настроить климат в салоне.</p>
+  </template>
+  <template id="info-bosch">
+    <h2 data-en="Dating with Bosch">Знакомства по Босху</h2>
+    <p data-en="A dating app screen inspired by Hieronymus Bosch’s paintings. The atmosphere of the artwork shapes the visual design.">Экран приложения для знакомств, вдохновлённый живописью Иеронима Босха. Атмосфера картины стала основой визуального стиля.</p>
+  </template>
+  <template id="info-home-shot">
+    <h2 data-en="Accessories collection">Коллекция аксессуаров</h2>
+    <p data-en="A mobile accessories store concept, from the collection showcase to the product page.">Концепт мобильного магазина аксессуаров. Показала путь от витрины коллекции к карточке товара.</p>
+  </template>
+  <template id="info-zoom">
+    <h2 data-en="Rethinking Zoom">Переосмысление Zoom</h2>
+    <p data-en="A video call concept with a 3D avatar and live captions. Call controls stay at the edges of the screen.">Концепт видеозвонка с 3D-аватаром и субтитрами в реальном времени. Управление звонком остаётся по краям экрана.</p>
+  </template>
+  <template id="info-axya">
+    <h2 data-en="Avito in the style of Yandex Music">Авито в стиле Яндекс Музыки</h2>
+    <p data-en="An Avito app concept that brings the visual style and interactions of Yandex Music into a classifieds interface.">Концепт приложения Авито, в котором визуальный стиль и механика Яндекс Музыки перенесены в интерфейс объявлений.</p>
+  </template>
+  <template id="info-yandex-go">
+    <h2 data-en="Yandex Go × Step Up">Яндекс Go × «Шаг вперёд»</h2>
+    <p data-en="A Yandex Go home screen inspired by Step Up (2006). The services rotate like a spinner, and tapping the basketball summons Tatum.">Главная страница Яндекс Go в эстетике фильма «Шаг вперёд» 2006 года. Сервисы вращаются как спиннер, а нажатие на баскетбольный мяч вызывает Татума.</p>
+  </template>
+  <template id="info-nike">
+    <h2 data-en="Nike Mind × Yayoi Kusama">Nike Mind × Яёй Кусама</h2>
+    <p data-en="A mobile landing page for a concept collaboration between Nike Mind sneakers and artist Yayoi Kusama. Her signature dots become part of the page animation.">Мобильный лендинг для концептуальной коллаборации кроссовок Nike Mind и художницы Яёй Кусамы. Её узнаваемые точки становятся частью анимации страницы.</p>
+  </template>
+  <template id="info-shot">
+    <h2 data-en="Coffee pre-order">Предзаказ кофе</h2>
+    <p data-en="A mobile coffee ordering concept for selecting a drink and exploring the available options.">Концепт мобильного заказа кофе. На экране можно выбрать напиток и посмотреть доступные варианты.</p>
+    <p><a href="https://surf-coffee-motion-vv.valentine2.chatgpt.site" data-en="Open interactive prototype">Открыть интерактивный прототип</a></p>
+  </template>
+  <template id="info-recording">
+    <h2 data-en="BORK Station">Станция BORK</h2>
+    <p data-en="A phone interface for controlling a smart speaker, with playback, brightness, and volume on one screen.">Концепт управления умной колонкой с телефона. На одном экране собрала воспроизведение, яркость и громкость.</p>
+  </template>
+  <template id="personal-files">
+    <span data-media="personal/weve.webp" data-poster="personal/weve.webp" data-width="1200" data-height="750" data-info="personal-weve"></span>
+    <span data-media="personal/poster-1.webp" data-poster="personal/poster-1.webp" data-width="1207" data-height="1700" data-info="personal-posters"></span>
+  </template>
+  <template id="personal-weve">
+    <h2>WEVE</h2>
+    <p data-en="WEVE is a browser-based editor for creating abstract graphics and animation. I wanted a place to experiment with photos and videos: layer waves, pixelation or glitches, see how they interact, and export the result.">WEVE — это браузерный редактор для создания абстрактной графики и анимации. Я сделала его, чтобы экспериментировать с фото и видео: накладывать волны, пикселизацию и глитч, смотреть, как эффекты сочетаются, и сохранять результат.</p>
+    <p><a href="https://weve-color-studio.valentine2.chatgpt.site" data-en="Open WEVE">Открыть WEVE</a></p>
+  </template>
+  <template id="personal-posters">
+    <h2 data-en="Meta Poster Games">Мета-постерные игры</h2>
+    <p data-en="Third place at Meta Poster Games, a poster design intensive and competition by Щёлочь, T-Bank and the Central University School of Design.">Третье место в «Мета-постерных играх», конкурсе и дизайн-интенсиве от Щёлочи, Т-Банка и Школы дизайна Центрального университета.</p>
+    <p data-en="The brief, ‘Sans-serif neue год’, asked us to show New Year without its usual symbols and to use T-Bank’s signature yellow. I used familiar dishes from the holiday table as the starting point. The three posters turn the ingredients of Olivier salad, mimosa salad with salmon and dressed herring into a visual game.">Бриф «Sans-serif neue год» предлагал показать Новый год без привычных символов и включить в палитру фирменный жёлтый Т-Банка. Я взяла за основу блюда с праздничного стола и превратила ингредиенты оливье, мимозы с лососем и селёдки под шубой в визуальную игру из трёх плакатов.</p>
+    <div class="personal-project-gallery">
+      <img src="personal/poster-2.webp" alt="Плакат № 2 / Poster 2" loading="lazy">
+      <img src="personal/poster-3.webp" alt="Плакат № 3 / Poster 3" loading="lazy">
+    </div>
+  </template>
+  <dialog class="concept-viewer" aria-label="Концепты / Concepts">
+    <div class="concept-viewer-layout">
+      <header class="concept-viewer-header" tabindex="-1" autofocus>
+        <button type="button" class="folder-return concept-return">К концептам</button>
+        <button type="button" class="concept-prev" aria-label="Предыдущий файл / Previous file"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><polyline points="12,3 6,9 12,15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button type="button" class="concept-next" aria-label="Следующий файл / Next file"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><polyline points="6,3 12,9 6,15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="concept-zoom" role="group" aria-label="Масштаб / Zoom">
+          <button type="button" data-concept-zoom="-1" aria-label="Отдалить / Zoom out">−</button>
+          <button type="button" data-concept-zoom="1" aria-label="Приблизить / Zoom in">+</button>
+        </div>
+      </header>
+      <div class="concept-project">
+        <div class="concept-media"></div>
+        <article class="personal-project-info" hidden></article>
+      </div>
+      <aside class="concept-actions">
+        <section class="concept-related" aria-labelledby="concept-related-title">
+          <h2 id="concept-related-title">Похожие</h2>
+          <div class="concept-related-grid"></div>
+        </section>
+      </aside>
+      <button type="button" class="profile-music-mute screen-music-mute" aria-label="Звук / Sound" aria-pressed="false"></button>
+    </div>
+  </dialog>
+  <section class="space" hidden>
+    <div class="space-bar">
+      <button type="button" id="folders" class="folder-return" aria-label="На главную / Back to home"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11.5 4 6.5 9l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <h2 id="folder-title"></h2>
+    </div>
+    <div class="camera" tabindex="0" aria-labelledby="folder-title">
+      <div class="world"></div>
+    </div>
+    <div class="space-tools">
+      <button type="button" class="space-stick" aria-label="Джойстик: вперёд, назад, влево, вправо / Navigation joystick" aria-keyshortcuts="ArrowUp ArrowDown ArrowLeft ArrowRight">
+        <span class="space-stick-thumb" aria-hidden="true"></span>
+      </button>
+      <div class="zoom">
+        <button type="button" id="zoom-out" aria-label="Отдалить / Zoom out">−</button>
+        <button type="button" id="zoom-in" aria-label="Приблизить / Zoom in">+</button>
+      </div>
+    </div>
+  </section>
+  <div class="reading" hidden>
+    <button type="button" id="back">К кейсам</button>
+
+<article class="panel case-panel" id="panel-projects" aria-labelledby="title-projects" hidden>
+      <aside class="case-sidebar">
+        <p class="eyebrow" data-en="Demo case">Демо-кейс</p>
+        <h2 tabindex="-1" id="title-projects" data-en="Table booking">Бронирование столика</h2>
+        <p data-en="Help a group of friends choose a café and agree on a booking time.">Помочь компании друзей выбрать кафе и договориться о времени бронирования.</p>
+        <div class="case-bubbles"><details name="projects-sections"><summary data-en="The brief">Задача</summary><p data-en="Help a group of friends choose a café and agree on a booking time.">Помочь компании друзей выбрать кафе и договориться о времени бронирования.</p></details>
+<details name="projects-sections"><summary data-en="The design">Решение</summary><p data-en="Compare venues by budget, menu and availability. After submitting a request, the user can track its status and accept a new time.">Сравнение заведений по бюджету, меню и доступному времени. После отправки заявки пользователь видит её статус и может принять новое время.</p></details>
+<details name="projects-sections"><summary data-en="What to test">Что проверить</summary><p data-en="Check whether people know when a table is confirmed and what to do when the venue offers another slot.">Понятно ли, когда столик подтверждён и что делать, если кафе предложило другой слот.</p></details></div>
+      </aside>
+      <div class="case-images" tabindex="0" aria-label="Иллюстрации кейса / Case illustrations">
+        <figure><div class="case-visual projects venues" aria-hidden="true"><span class="art"></span><div class="mock"><i></i><i></i><i></i></div></div>
+        </figure><figure><div class="case-visual projects status" aria-hidden="true"><span class="art"></span><div class="mock"><i></i><i></i><i></i></div></div>
+        </figure><figure><div class="case-visual projects confirmation" aria-hidden="true"><span class="art"></span><div class="mock"><i></i><i></i><i></i></div></div>
+        </figure>
+      </div>
+    </article>
+
+<article class="panel case-panel" id="panel-personal" aria-labelledby="title-personal" hidden>
+      <aside class="case-sidebar">
+        <p class="eyebrow" data-en="Demo case">Демо-кейс</p>
+        <h2 tabindex="-1" id="title-personal" data-en="Color diary">Дневник цвета</h2>
+        <p data-en="Build a small palette collection from everyday photographs.">Собрать небольшую коллекцию палитр из повседневных фотографий.</p>
+        <div class="case-bubbles"><details name="personal-sections"><summary data-en="The idea">Идея</summary><p data-en="Build a small palette collection from everyday photographs.">Собрать небольшую коллекцию палитр из повседневных фотографий.</p></details>
+<details name="personal-sections"><summary data-en="The experiment">Эксперимент</summary><p data-en="Turn each photograph into a card with five colors, a short note and a date.">Каждый снимок превращается в карточку с пятью оттенками, короткой заметкой и датой.</p></details></div>
+      </aside>
+      <div class="case-images" tabindex="0" aria-label="Иллюстрации кейса / Case illustrations">
+        <figure><div class="case-visual personal palette-warm" aria-hidden="true"><span class="art"></span><div class="mock"><i></i><i></i><i></i><i></i><i></i></div></div>
+        </figure><figure><div class="case-visual personal palette-cool" aria-hidden="true"><span class="art"></span><div class="mock"><i></i><i></i><i></i><i></i><i></i></div></div>
+        </figure>
+      </div>
+    </article>
+    <nav class="case-navigation" aria-label="Кейсы / Cases" hidden>
+      <button type="button" id="previous-case" data-en="Previous case">Предыдущий кейс</button>
+      <button type="button" id="next-case" data-en="Next case">Следующий кейс</button>
+    </nav>
+  </div>
+</main>
+</body>
+</html>

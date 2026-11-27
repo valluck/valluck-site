@@ -1,0 +1,87 @@
+[
+  {
+    "src": "music/track-01.mp3",
+    "artist": "Frank Sinatra",
+    "title": "Jingle Bells"
+  },
+  {
+    "src": "music/track-02.mp3",
+    "artist": "Billie Holiday",
+    "title": "Moonlight In Vermont"
+  },
+  {
+    "src": "music/track-03.mp3",
+    "artist": "Bradley Leighton",
+    "title": "Christmas Time Is Here"
+  },
+  {
+    "src": "music/track-04.mp3",
+    "artist": "Bradley Leighton",
+    "title": "Little Drummer Boy"
+  },
+  {
+    "src": "music/track-05.mp3",
+    "artist": "Diana Krall",
+    "title": "The Christmas Song"
+  },
+  {
+    "src": "music/track-06.mp3",
+    "artist": "Ella Fitzgerald",
+    "title": "Have Yourself A Merry Little Christmas"
+  },
+  {
+    "src": "music/track-07.mp3",
+    "artist": "Ella Fitzgerald",
+    "title": "Rudolph the Red Nosed Reindeer"
+  },
+  {
+    "src": "music/track-08.mp3",
+    "artist": "Fourplay",
+    "title": "Amazing Graze"
+  },
+  {
+    "src": "music/track-09.mp3",
+    "artist": "Fourplay",
+    "title": "Auld Lang Syne"
+  },
+  {
+    "src": "music/track-10.mp3",
+    "artist": "Frank Sinatra",
+    "title": "Santa Claus Is Coming To Town"
+  },
+  {
+    "src": "music/track-11.mp3",
+    "artist": "Kirk Whalum",
+    "title": "Love From A Star"
+  },
+  {
+    "src": "music/track-12.mp3",
+    "artist": "Kirk Whalum",
+    "title": "Sweet Little Jesus Boy"
+  },
+  {
+    "src": "music/track-13.mp3",
+    "artist": "Madeleine Peyroux, Michel Legrand",
+    "title": "Have Yourself A Merry Little Christmas"
+  },
+  {
+    "src": "music/track-14.mp3",
+    "artist": "Martin Nockalls, Steve Merrett",
+    "title": "The Earl Of Salisbury's Pavan"
+  },
+  {
+    "src": "music/track-15.mp3",
+    "artist": "Shakatak",
+    "title": "Christmas Time Again"
+  },
+  {
+    "src": "music/track-16.mp3",
+    "artist": "Stanley Jordan",
+    "title": "Georgia On My Mind"
+  },
+  {
+    "src": "music/track-17.mp3",
+    "artist": "Trijntje Oosterhuis, Jazz Orchestra of the Concertgebouw",
+    "title": "Sleigh Ride"
+  }
+]
