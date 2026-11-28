@@ -216,3 +216,17 @@
 #panel-booking .study-copy p + p {
   margin-top: 12px;
 }
+
+/* Hide the Maps cover while its replacement is being prepared. */
+#panel-booking > .savings-hero,
+.folder.projects .folder-preview:has(> img[src="previews/maps-cover.webp"]),
+.case-card > .savings-cover:has(> img[src="previews/maps-cover.webp"]) {
+  display: none;
+}
+
+.fragment.case-card:has(> .savings-cover > img[src="previews/maps-cover.webp"]) {
+  grid-template-rows: 1fr;
+  align-items: end;
+  background: #252525;
+  color: #f2f2f2;
+}
