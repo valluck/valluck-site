@@ -230,3 +230,16 @@
   background: #252525;
   color: #f2f2f2;
 }
+
+.fragment.case-card:has(> .savings-cover > img[src="previews/maps-cover.webp"]) {
+  padding: 20px;
+}
+
+.fragment.case-card:has(> .savings-cover > img[src="previews/maps-cover.webp"]) > span:last-child {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip-path: none;
+  white-space: normal;
+}
