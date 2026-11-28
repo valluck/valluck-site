@@ -199,7 +199,7 @@ function openFolder(button) {
       tile.append(makeConceptMedia(index, true));
       tile.style.setProperty('--sway-delay', `-${index * .83}s`);
     } else {
-      const cover = panel.id === 'panel-savings' ? 'savings/project-card.webp' : panel.id === 'panel-booking' ? 'previews/maps-cover.webp' : null;
+      const cover = panel.id === 'panel-savings' ? 'savings/project-card.webp' : panel.id === 'panel-booking' ? 'previews/maps-request.webp' : null;
       const artwork = document.createElement(cover ? 'figure' : 'span');
       artwork.setAttribute('aria-hidden', 'true');
       if (cover) {
