@@ -52,16 +52,20 @@ function setupCaseGallery(casePanel, featuredIds) {
     cards.forEach((card, index) => {
       const offset = wrap(index - position + count / 2) - count / 2;
       const distance = Math.abs(offset);
-      const isOnstage = distance <= range + .2;
+      const scale = Math.max(.71, 1 - distance * .105);
+      const drop = 12 * Math.min(distance, 4);
+      const tilt = Math.max(-16, Math.min(16, -offset * 8));
+      const angle = Math.abs(tilt) * Math.PI / 180;
+      const halfCard = phoneWidth * scale * (Math.cos(angle) + 1.55 * Math.sin(angle)) / 2;
+      const edgeRoom = width / 2 - distance * spacing - halfCard;
+      const isOnstage = wirePreview ? edgeRoom > 1 : distance <= range + .2;
       card.hidden = !isOnstage;
       card.tabIndex = index === center || card === document.activeElement ? 0 : -1;
       if (!isOnstage) return;
 
-      const scale = Math.max(.71, 1 - distance * .105);
-      const drop = 12 * Math.min(distance, 4);
-      const tilt = Math.max(-16, Math.min(16, -offset * 8));
       card.style.transform = `translate(${offset * spacing}px, ${drop}px) rotate(${tilt}deg) scale(${scale})`;
-      card.style.opacity = String(Math.max(.08, 1 - (distance / range) ** 1.7 * .84));
+      const opacity = Math.max(.08, 1 - (distance / range) ** 1.7 * .84);
+      card.style.opacity = String(wirePreview ? opacity * Math.min(1, edgeRoom / 28) : opacity);
       card.style.zIndex = String(12 - Math.round(distance * 2));
     });
   }
@@ -156,6 +160,7 @@ function setupCaseGallery(casePanel, featuredIds) {
   new ResizeObserver(() => {
     if (!carousel.clientWidth) return;
     const visibleCard = cards.find(card => !card.hidden);
+    if (!visibleCard) return;
     spacing = Math.max(111, visibleCard.offsetWidth * 1.28);
     render();
   }).observe(carousel);

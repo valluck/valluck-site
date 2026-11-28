@@ -165,10 +165,16 @@
 #panel-booking {
   --savings-inset: clamp(10px, 3vw, 36px);
 }
-#panel-booking .savings-carousel {
-  height: calc(var(--phone-width) * 1.55 + 48px);
+.case-mode .reading:has(#panel-booking:not([hidden])) {
+  container-type: inline-size;
 }
-#panel-booking .wire-phone {
+#panel-booking .savings-carousel {
+  --phone-width: min(clamp(140px, 16.5vw, 222px), 32cqw);
+  width: 100cqw;
+  margin-inline: calc((100% - 100cqw) / 2);
+  height: calc(var(--phone-width) * 1.55 + 72px);
+}
+.wire-phone {
   display: block;
   aspect-ratio: 1 / 1.55;
   border-radius: 19px;
@@ -177,4 +183,13 @@
 }
 .booking-view-media {
   width: min(80vw, 300px, calc((100dvh - 125px) / 1.55));
+}
+
+.folder.projects .folder-preview:has(img) {
+  display: block;
+  padding: 0;
+}
+.folder.projects .folder-preview .wire-phone {
+  width: 48%;
+  border-radius: 14%;
 }
