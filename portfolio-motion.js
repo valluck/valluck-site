@@ -123,12 +123,14 @@ function openFragment(button, panel, heading) {
   caseNavigation.hidden = caseIndex < 0;
   previousCase.disabled = caseIndex <= 0;
   nextCase.disabled = caseIndex >= casePanels.length - 1;
-  space.hidden = true;
+  const isCase = panel.classList.contains('case-panel');
+  space.hidden = !isCase;
+  space.inert = isCase;
   reading.hidden = false;
   caseBack.hidden = false;
   for (const entry of reading.querySelectorAll('.panel')) entry.hidden = entry !== panel;
   heading.tabIndex = -1;
-  document.body.classList.toggle('case-mode', panel.classList.contains('case-panel'));
+  document.body.classList.toggle('case-mode', isCase);
   window.scrollTo(0, 0);
   heading.focus({ preventScroll: true });
 }
@@ -269,6 +271,7 @@ function backToSpace() {
   document.body.classList.remove('case-mode');
   reading.hidden = true;
   caseBack.hidden = true;
+  space.inert = false;
   space.hidden = false;
   window.scrollTo(0, 0);
   if (fragment.hidden) fit();
@@ -823,7 +826,7 @@ let pinchAnchor;
 
 function animateFolderMovement() {
   panFrame = 0;
-  if (space.hidden) {
+  if (space.hidden || space.inert) {
     panX = panY = pinchDepth = 0;
     return;
   }
@@ -868,7 +871,7 @@ function setStickPosition(event) {
 }
 
 function animateFolderStick(time) {
-  if (space.hidden) {
+  if (space.hidden || space.inert) {
     resetFolderStick();
     return;
   }

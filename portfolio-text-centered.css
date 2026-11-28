@@ -129,6 +129,16 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
 /* Open case */
 .case-mode .stage { margin-left: 0; }
+.case-mode .space {
+  position: fixed;
+  inset: 0;
+}
+.case-mode .space::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
 .case-mode .profile {
   position: fixed; inset: 14px 19px auto auto; width: auto; padding: 4px;
   background: #262626d9; border-radius: 13px;
@@ -429,7 +439,7 @@ body:has(.shelf[hidden]):has(.about-space[hidden]) .space { height: 100dvh; }
   background: transparent;
 }
 :is(.concept-viewer, .savings-viewer)::backdrop,
-.case-mode .reading:has(#panel-savings:not([hidden])) {
+.case-mode .space::after {
   background: rgb(var(--viewer-background) / 87%);
   backdrop-filter: blur(16px);
 }
