@@ -114,112 +114,6 @@
     linear-gradient(to bottom, #ffffff08 1px, transparent 1px) center / 24px 24px,
     radial-gradient(ellipse at 50% 0, var(--wire-surface), #212121);
 }
-.wire-stage.wire-pair { grid-template-columns: repeat(2, minmax(0, 190px)); }
-.wire-phone {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  min-width: 0;
-  min-height: 220px;
-  padding: 12px;
-  border: 1px solid #66645f;
-  border-radius: 19px;
-  background: #191919;
-  box-shadow: 0 12px 24px #10101055;
-  font-size: .875rem;
-  line-height: 1.25;
-}
-.wire-phone::before {
-  content: "";
-  align-self: center;
-  width: 31px;
-  height: 4px;
-  border-radius: 10px;
-  background: #686868;
-}
-.wire-phone strong { margin: 7px 0 4px; font-size: .95rem; }
-.wire-row, .wire-action, .wire-text {
-  padding: 8px;
-  border: 1px solid #ffffff20;
-  border-radius: 7px;
-}
-.wire-row { background: #252525; }
-.wire-text { border-style: dashed; color: #d2d2d2; }
-.wire-action {
-  margin-top: auto;
-  background: var(--wire-accent);
-  color: #202020;
-  font-weight: 600;
-  text-align: center;
-}
-.wire-product, .wire-map, .wire-status {
-  position: relative;
-  display: grid;
-  place-items: center;
-  min-height: 48px;
-  border: 1px solid #ffffff20;
-  border-radius: 7px;
-  background: #242424;
-}
-.wire-product::before {
-  content: "";
-  width: 38px;
-  height: 23px;
-  border: 1px dashed #a8a39a;
-  border-radius: 4px;
-}
-.wire-map {
-  background: repeating-linear-gradient(30deg, transparent 0 12px, #ffffff2e 13px 14px, transparent 15px 24px),
-    repeating-linear-gradient(120deg, #2c2c2c 0 10px, #545454 11px 13px, #2c2c2c 14px 23px);
-}
-.wire-map i {
-  position: absolute;
-  top: 22%;
-  left: 24%;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--wire-accent);
-}
-.wire-map i:nth-child(2) { left: 53%; top: 60%; }
-.wire-map i:nth-child(3) { left: 77%; top: 31%; }
-.wire-people { display: flex; align-items: center; min-height: 48px; padding-left: 4px; }
-.wire-people i {
-  width: 25px;
-  height: 25px;
-  margin-right: -3px;
-  border: 1px solid #a59b82;
-  border-radius: 50%;
-  background: #3d382d;
-}
-.wire-progress {
-  display: flex;
-  height: 12px;
-  margin: 10px 0;
-  overflow: hidden;
-  border-radius: 10px;
-  background: #3a3936;
-}
-.wire-progress i { width: 62%; border-radius: inherit; background: var(--wire-accent); }
-.wire-progress.is-full i { width: 100%; }
-.wire-steps {
-  display: flex;
-  align-items: end;
-  gap: 5px;
-  height: 58px;
-}
-.wire-steps i { flex: 1; height: 30%; border: 1px solid #a79d85; border-radius: 4px 4px 0 0; background: #3d382d; }
-.wire-steps i:nth-child(2) { height: 50%; }
-.wire-steps i:nth-child(3) { height: 76%; }
-.wire-steps i:nth-child(4) { height: 100%; background: var(--wire-accent); }
-.wire-status::before {
-  content: "";
-  width: 18px;
-  height: 18px;
-  border: 1px dashed var(--wire-accent);
-  border-radius: 50%;
-}
-.wire-status.is-confirmed::before { border-style: solid; background: var(--wire-accent); }
 .case-navigation {
   position: fixed;
   z-index: 2;
@@ -241,11 +135,6 @@
   .study-copy { grid-template-columns: 1fr; }
   .study-copy h3 { grid-row: auto; }
   .study-copy p { grid-column: 1; }
-}
-@media (max-width: 480px) {
-  .wire-stage { grid-template-columns: repeat(auto-fit, minmax(min(128px, 100%), 1fr)); }
-  .wire-stage.wire-pair { grid-template-columns: repeat(auto-fit, minmax(min(128px, 100%), 1fr)); }
-  .wire-phone { min-height: 205px; }
 }
 
 .booking-locked {
@@ -280,15 +169,12 @@
   height: calc(var(--phone-width) * 1.55 + 48px);
 }
 #panel-booking .wire-phone {
+  display: block;
   aspect-ratio: 1 / 1.55;
-  text-align: start;
+  border-radius: 19px;
+  background: #494e5a;
   pointer-events: none;
 }
 .booking-view-media {
-  width: min(80vw, 300px);
-}
-.booking-view-media .wire-phone {
-  max-height: calc(100dvh - 125px);
-  overflow: auto;
-  pointer-events: auto;
+  width: min(80vw, 300px, calc((100dvh - 125px) / 1.55));
 }
