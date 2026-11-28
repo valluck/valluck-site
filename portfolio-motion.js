@@ -199,13 +199,13 @@ function openFolder(button) {
       tile.append(makeConceptMedia(index, true));
       tile.style.setProperty('--sway-delay', `-${index * .83}s`);
     } else {
-      const cover = panel.id === 'panel-savings';
+      const cover = panel.id === 'panel-savings' ? 'savings/project-card.webp' : panel.id === 'panel-booking' ? 'previews/maps-cover.webp' : null;
       const artwork = document.createElement(cover ? 'figure' : 'span');
       artwork.setAttribute('aria-hidden', 'true');
       if (cover) {
         artwork.className = 'savings-cover';
-        const image = new Image(2048, 1452);
-        image.src = 'savings/project-card.webp';
+        const image = new Image();
+        image.src = cover;
         image.alt = '';
         image.decoding = 'async';
         artwork.append(image);

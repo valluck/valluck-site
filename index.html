@@ -69,9 +69,9 @@
   })();
 </script>
 <link rel="stylesheet" href="portfolio-text-centered.css?v=fda73ed">
-<link rel="stylesheet" href="portfolio-cases.css?v=wide-maps">
+<link rel="stylesheet" href="portfolio-cases.css?v=maps-cover">
 <link rel="stylesheet" href="portfolio-savings.css">
-<script src="portfolio-motion.js?v=fda73ed" defer></script>
+<script src="portfolio-motion.js?v=maps-cover" defer></script>
 <script src="portfolio-savings.js?v=wide-maps" defer></script>
 <script src="portfolio-comments.js" defer></script>
 <script src="portfolio-music.js" type="module"></script>
@@ -208,7 +208,7 @@
     <div class="home-canvas">
   <section class="shelf" id="home-projects" aria-label="Проекты / Projects">
     <div class="folder-grid">
-    <button type="button" class="folder projects" data-folder="projects"><span class="folder-art" aria-hidden="true"><span class="folder-back"></span><span class="folder-preview"><span class="wire-phone"></span></span><span class="folder-preview"><img src="savings/project-card.webp" alt="" decoding="async" draggable="false"></span><span class="folder-preview"><span class="wire-phone"></span></span><span class="folder-front"></span></span><strong data-en="Cases">Кейсы</strong></button>
+    <button type="button" class="folder projects" data-folder="projects"><span class="folder-art" aria-hidden="true"><span class="folder-back"></span><span class="folder-preview"><img src="savings/project-card.webp" alt="" decoding="async" draggable="false"></span><span class="folder-preview"><img src="previews/maps-cover.webp" alt="" decoding="async" draggable="false"></span><span class="folder-front"></span></span><strong data-en="Cases">Кейсы</strong></button>
     <button type="button" class="folder concepts" data-folder="concepts"><span class="folder-art" aria-hidden="true"><span class="folder-back"></span><span class="folder-preview"><img src="previews/robotaxi.webp" decoding="async" alt="" draggable="false"></span><span class="folder-preview"><img src="previews/bosch.webp" decoding="async" alt="" draggable="false"></span><span class="folder-preview"><img src="previews/zoom.webp" decoding="async" alt="" draggable="false"></span><span class="folder-front"></span></span><strong data-en="Concepts">Концепты</strong></button>
     <button type="button" class="folder personal" data-folder="personal"><span class="folder-art" aria-hidden="true"><span class="folder-back"></span><span class="folder-preview"><img src="previews/poster-1.webp" decoding="async" alt="" draggable="false"></span><span class="folder-preview"><img src="previews/weve.webp" decoding="async" alt="" draggable="false"></span><span class="folder-preview"><img src="previews/poster-2.webp" decoding="async" alt="" draggable="false"></span><span class="folder-front"></span></span><strong data-en="Personal">Для себя</strong></button>
     </div>
@@ -868,7 +868,21 @@
     </article>
 
 <article class="panel case-panel case-study" id="panel-booking" aria-labelledby="title-booking" hidden>
-      <header class="study-header"><p class="eyebrow" data-en="Maps · Student project">Карты · Учебный проект</p><h2 id="title-booking" tabindex="-1" data-en="Table booking in Maps">Бронирование столика из карт</h2><p class="study-lead" data-en="From choosing a café to a confirmed table for four.">От выбора кафе до подтверждённого столика на четверых.</p></header>
+      <div class="savings-hero">
+        <figure class="savings-cover">
+          <img src="previews/maps-cover.webp" alt="" decoding="async">
+        </figure>
+      </div>
+      <header class="savings-intro">
+        <h2 id="title-booking" tabindex="-1" data-en="Table booking in Maps">Бронирование столика из карт</h2>
+        <p class="savings-lead" data-en="From choosing a café to a confirmed table for four.">От выбора кафе до подтверждённого столика на четверых.</p>
+        <p class="savings-summary" data-en="I designed a booking flow in Maps with two entry points: filters and an AI assistant. The scenario includes a change of time and confirmation from the café.">Спроектировала бронирование из карт через фильтры и ИИ-помощника. Проработала перенос времени и подтверждение от кафе.</p>
+        <ul class="savings-tags" aria-label="Теги проекта / Project tags">
+          <li class="bubble" data-en="Student concept">Учебный концепт</li>
+          <li class="bubble" data-en="Maps">Карты</li>
+          <li class="bubble" data-en="Mobile app">Мобильное приложение</li>
+        </ul>
+      </header>
       <section class="study-section"><div class="study-copy"><h3 data-en="The brief">Задача</h3><p data-en="Design a booking flow within Maps for a Friday meetup at 7:00 pm. Account for a budget of ₽1,500 per person and vegetarian options. Show what happens when the café offers a different time.">Спроектировать бронирование из карт для встречи в пятницу в 19:00. Учесть бюджет до 1 500 ₽ на человека и вегетарианское меню. Показать, что происходит, если кафе предлагает другое время.</p></div></section>
       <section class="study-section"><div class="study-copy"><h3 data-en="My contribution">Мой вклад</h3><p data-en="Reviewed booking flows, mapped the customer journey, and designed two entry points: filters in the venue view and a request to an AI assistant.">Разобрала сценарии бронирования, собрала CJM и спроектировала два входа: фильтры в контексте заведения и запрос ИИ-помощнику.</p></div><figure class="study-figure"><div class="wire-stage booking-locked"><span class="booking-lock" aria-hidden="true"></span></div><figcaption data-en="Final visuals in progress">Визуал в разработке</figcaption></figure></section>
       <section class="savings-story" aria-labelledby="booking-journey">

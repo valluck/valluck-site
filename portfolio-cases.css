@@ -163,6 +163,7 @@
   border-radius: 9px 9px 0 0;
 }
 #panel-booking {
+  --savings-width: 720px;
   --savings-inset: clamp(10px, 3vw, 36px);
 }
 .case-mode .reading:has(#panel-booking:not([hidden])) {
@@ -189,7 +190,29 @@
   display: block;
   padding: 0;
 }
-.folder.projects .folder-preview .wire-phone {
-  width: 48%;
-  border-radius: 14%;
+.folder.projects .folder-preview:nth-child(3) {
+  --fan-x: 39%;
+  --fan-angle: 13deg;
+}
+#panel-booking .savings-hero .savings-cover img {
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  scale: 1;
+}
+#panel-booking .savings-hero {
+  width: min(960px, 100%);
+}
+#panel-booking :is(.savings-intro, .savings-story, .study-section) {
+  width: min(var(--savings-width), 100%);
+  margin-inline: auto;
+}
+#panel-booking .study-copy {
+  display: block;
+}
+#panel-booking .study-copy h3 {
+  margin-bottom: 10px;
+  letter-spacing: -.04em;
+}
+#panel-booking .study-copy p + p {
+  margin-top: 12px;
 }
