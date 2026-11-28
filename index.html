@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Валя Васильева — продуктовый дизайнер.">
 <meta name="theme-color" content="#141414">
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" type="image/png" href="favicon.png" sizes="64x64">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon.png" sizes="64x64">
 <title>Валя Васильева · Портфолио</title>
 <style>
   .site-loader {
@@ -69,9 +69,11 @@
   })();
 </script>
 <link rel="stylesheet" href="portfolio-text-centered.css">
+<link rel="stylesheet" href="portfolio-cases.css">
+<link rel="stylesheet" href="portfolio-savings.css">
 <script src="portfolio-motion.js" defer></script>
+<script src="portfolio-savings.js" defer></script>
 <script src="portfolio-comments.js" defer></script>
-
 <script src="portfolio-music.js" type="module"></script>
 </head>
 <body>
@@ -174,13 +176,19 @@
     <button type="button" data-home="projects" aria-pressed="true" aria-controls="home-projects" data-en="Projects">Проекты</button>
     <button type="button" data-home="about" aria-pressed="false" aria-controls="home-about" data-en="About">Обо мне</button>
   </nav>
-  
-  
   <button type="button" id="comments-open" class="comments-open" popovertarget="comments-dialog" aria-haspopup="dialog" aria-controls="comments-dialog" aria-label="Оставить записку / Leave a note">
     <span class="note-sheet" aria-hidden="true">
       <span class="note-paper"><span class="note-caption" data-en="Leave a note">Оставить записку</span></span>
     </span>
   </button>
+  <nav class="site-contacts" aria-label="Контакты / Contact">
+    <a href="https://t.me/valluck" aria-label="Telegram: @valluck" title="Telegram">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21 4-5 16-5-6-7-3 17-7ZM11 14l6-6m-6 6-1 5 3-2"/></svg>
+    </a>
+    <a href="mailto:vasilieva0081@gmail.com" aria-label="Электронная почта / Email" title="Электронная почта / Email">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>
+    </a>
+  </nav>
   <section class="comments-dialog" id="comments-dialog" data-endpoint="https://script.google.com/macros/s/AKfycbz1blNTqm3m82ZGH-Gby6BvmnromBEuiQIwLJti_JsyquLGndQxBbKANrQ4vCr1TSZFJw/exec" popover role="dialog" aria-labelledby="comments-title">
     <header class="comments-header">
       <h2 id="comments-title" data-en="Notes">Записки</h2>
@@ -200,7 +208,7 @@
     <div class="home-canvas">
   <section class="shelf" id="home-projects" aria-label="Проекты / Projects">
     <div class="folder-grid">
-    <button type="button" class="folder projects" data-folder="projects"><span class="folder-art" aria-hidden="true"><span class="folder-back"></span><span class="folder-preview"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v2"/></svg></span><span class="folder-preview"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v2"/></svg></span><span class="folder-preview"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v2"/></svg></span><span class="folder-front"></span></span><strong data-en="Cases">Кейсы</strong></button>
+    <button type="button" class="folder projects" data-folder="projects"><span class="folder-art" aria-hidden="true"><span class="folder-back"></span><span class="folder-preview"><span class="folder-wire"></span></span><span class="folder-preview"><span class="folder-wire folder-wire-map"></span></span><span class="folder-front"></span></span><strong data-en="Cases">Кейсы</strong></button>
     <button type="button" class="folder concepts" data-folder="concepts"><span class="folder-art" aria-hidden="true"><span class="folder-back"></span><span class="folder-preview"><img src="previews/robotaxi.webp" decoding="async" alt="" draggable="false"></span><span class="folder-preview"><img src="previews/bosch.webp" decoding="async" alt="" draggable="false"></span><span class="folder-preview"><img src="previews/zoom.webp" decoding="async" alt="" draggable="false"></span><span class="folder-front"></span></span><strong data-en="Concepts">Концепты</strong></button>
     <button type="button" class="folder personal" data-folder="personal"><span class="folder-art" aria-hidden="true"><span class="folder-back"></span><span class="folder-preview"><img src="previews/poster-1.webp" decoding="async" alt="" draggable="false"></span><span class="folder-preview"><img src="previews/weve.webp" decoding="async" alt="" draggable="false"></span><span class="folder-preview"><img src="previews/poster-2.webp" decoding="async" alt="" draggable="false"></span><span class="folder-front"></span></span><strong data-en="Personal">Для себя</strong></button>
     </div>
@@ -297,12 +305,6 @@
       <button type="button" class="profile-music-mute screen-music-mute" aria-label="Звук / Sound" aria-pressed="false"></button>
     </div>
   </dialog>
-  <template id="case-lock">
-    <span class="case-lock-content">
-      <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v2"/></svg>
-      <span>Скоро в портфолио</span>
-    </span>
-  </template>
   <template id="concepts-files">
     <span data-media="concepts/robotaxi.webp" data-poster="concepts/robotaxi.webp" data-width="2048" data-height="1152" data-info="info-robotaxi"></span>
     <span data-media="concepts/bosch.webp" data-poster="concepts/bosch.webp" data-width="2048" data-height="2048" data-info="info-bosch"></span>
@@ -371,8 +373,8 @@
   </template>
   <dialog class="concept-viewer" aria-label="Концепты / Concepts">
     <div class="concept-viewer-layout">
-      <header class="concept-viewer-header" tabindex="-1" autofocus>
-        <button type="button" class="folder-return concept-return">К концептам</button>
+      <header class="concept-viewer-header viewer-controls" tabindex="-1" autofocus>
+        <button type="button" class="folder-return concept-return viewer-return">К концептам</button>
         <button type="button" class="concept-prev" aria-label="Предыдущий файл / Previous file"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><polyline points="12,3 6,9 12,15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button type="button" class="concept-next" aria-label="Следующий файл / Next file"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><polyline points="6,3 12,9 6,15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <div class="concept-zoom" role="group" aria-label="Масштаб / Zoom">
@@ -412,23 +414,597 @@
     </div>
   </section>
   <div class="reading" hidden>
-    <button type="button" id="back">К кейсам</button>
 
-<article class="panel case-panel" id="panel-projects" aria-labelledby="title-projects" hidden>
-      <aside class="case-sidebar">
-        <p class="eyebrow" data-en="Demo case">Демо-кейс</p>
-        <h2 tabindex="-1" id="title-projects" data-en="Table booking">Бронирование столика</h2>
-        <p data-en="Help a group of friends choose a café and agree on a booking time.">Помочь компании друзей выбрать кафе и договориться о времени бронирования.</p>
-        <div class="case-bubbles"><details name="projects-sections"><summary data-en="The brief">Задача</summary><p data-en="Help a group of friends choose a café and agree on a booking time.">Помочь компании друзей выбрать кафе и договориться о времени бронирования.</p></details>
-<details name="projects-sections"><summary data-en="The design">Решение</summary><p data-en="Compare venues by budget, menu and availability. After submitting a request, the user can track its status and accept a new time.">Сравнение заведений по бюджету, меню и доступному времени. После отправки заявки пользователь видит её статус и может принять новое время.</p></details>
-<details name="projects-sections"><summary data-en="What to test">Что проверить</summary><p data-en="Check whether people know when a table is confirmed and what to do when the venue offers another slot.">Понятно ли, когда столик подтверждён и что делать, если кафе предложило другой слот.</p></details></div>
-      </aside>
-      <div class="case-images" tabindex="0" aria-label="Иллюстрации кейса / Case illustrations">
-        <figure><div class="case-visual projects venues" aria-hidden="true"><span class="art"></span><div class="mock"><i></i><i></i><i></i></div></div>
-        </figure><figure><div class="case-visual projects status" aria-hidden="true"><span class="art"></span><div class="mock"><i></i><i></i><i></i></div></div>
-        </figure><figure><div class="case-visual projects confirmation" aria-hidden="true"><span class="art"></span><div class="mock"><i></i><i></i><i></i></div></div>
+<article class="panel case-panel case-study" id="panel-savings" aria-labelledby="title-savings" hidden>
+      <div class="savings-hero">
+        <figure class="savings-cover">
+          <img src="savings/case-cover-yellow.webp" width="1774" height="887" alt="" decoding="async">
         </figure>
       </div>
+      <header class="savings-intro">
+        <h2 id="title-savings" tabindex="-1" data-en="Family Savings for T-Bank">Семейная копилка для Т‑Банка</h2>
+        <p class="savings-lead" data-en="Save together for a shared purchase. The more people join, the higher the interest rate.">Копите вместе на общую покупку. Чем больше участников, тем выше ставка.</p>
+        <p class="savings-summary" data-en="I designed the shared savings journey in the T-Bank app, from opening an account and inviting others to calculating contributions and reaching the goal.">Спроектировала сценарий совместных накоплений в приложении Т‑Банка: от открытия счёта и приглашения близких до расчёта пополнений и достижения цели.</p>
+        <ul class="savings-tags" aria-label="Теги проекта / Project tags">
+          <li class="bubble" data-en="Student concept">Учебный концепт</li>
+          <li class="bubble" data-en="Fintech">Финтех</li>
+          <li class="bubble" data-en="Mobile app">Мобильное приложение</li>
+        </ul>
+      </header>
+      <section class="savings-showcase" aria-label="Экраны проекта / Project screens">
+        <div class="savings-carousel"></div>
+      </section>
+      <section class="savings-story">
+        <h3 data-en="About the project">О проекте</h3>
+        <p data-en="A family wants to save for a refrigerator by a specific date. They can choose a model in T-Shopping, find out how much to set aside, and invite others. Everyone can contribute and track shared progress.">Семья хочет накопить на холодильник к определённой дате. В копилке можно выбрать конкретную модель в Т‑Шопинге, узнать, сколько нужно откладывать, и пригласить близких. Участники пополняют счёт и видят общий прогресс.</p>
+      </section>
+      <section class="savings-story">
+        <h3 data-en="My task">Моя задача</h3>
+        <p data-en="Design a shared savings account where someone can start on their own, invite others, and set a shared goal. Build a clickable prototype and plan how to test invitations and goal setting.">Спроектировать совместный накопительный счёт, на котором можно начать копить самостоятельно, подключить близких и поставить общую цель. Собрать кликабельный прототип и определить, как проверить механику приглашений и выбора цели.</p>
+      </section>
+      <section class="savings-story">
+        <h3 data-en="Project context">Вводные</h3>
+        <p data-en="I compared shared finance features from VTB, Sber, and T-Bank. VTB already had a similar group-based rate increase, so I linked saving to a purchase. Users can pick a product in T-Shopping and see how much to set aside by the target date. The concept offers higher cashback if the group reaches the goal on time.">Сравнила, как ВТБ, Сбер и Т‑Банк устроили совместные финансы. У ВТБ уже была похожая механика с повышением ставки за участие в группе. Поэтому в концепте связала накопления с покупкой: человек может выбрать товар в Т‑Шопинге и сразу увидеть, сколько нужно откладывать к нужной дате. Если группа успевает накопить в срок, концепт предусматривает повышенный кешбэк на покупку.</p>
+      </section>
+      <section class="savings-story">
+        <h3 data-en="Hypothesis">Гипотеза</h3>
+        <p data-en="If we offer families, groups of friends and unmarried couples a way to save together with an interest rate that rises as more people join, and a goal tied to a specific product or trip from T-Shopping or T-Travel, more groups will reach their goals and more will go on to buy within the ecosystem. The financial benefits (higher interest and extra cashback) and a tangible goal (the exact item or trip instead of an abstract amount) address the main reasons group savings fall through: unclear responsibility and fading motivation.">Если мы предложим семьям и группам друзей/пар вне брака новый сценарий совместного накопления с растущей ставкой, которая зависит от количества участников, и целью, привязанной к конкретному товару или поездке из Т‑Шопинга/Т‑Путешествий, то это приведёт к росту доли завершённых целей и конверсии в покупку внутри экосистемы, потому что финансовая выгода (ставка + повышенный кэшбек) и наглядность цели (не абстрактная сумма, а «эта самая» вещь/поездка) снижают главную причину провала групповых копилок — размытую ответственность и потерю мотивации со временем.</p>
+      </section>
+      <section class="savings-story">
+        <h3 data-en="Design process">Процесс работы</h3>
+        <p data-en="I reviewed comparable products, mapped the customer journey, and designed four stages: opening the account, inviting others, setting a goal, and reaching the target. I connected the screens in a clickable Figma prototype.">Изучила аналоги, собрала CJM и спроектировала четыре части сценария: открытие копилки, приглашение близких, постановку цели и достижение нужной суммы. Связала экраны в кликабельный прототип Figma.</p>
+        <p data-en="I planned two usability test tasks: invite someone by phone number and set a deadline for saving for a refrigerator. I would check whether participants can complete both tasks without help and explain how much they need to save.">Для юзабилити-теста запланировала две задачи: пригласить человека по номеру телефона и настроить накопление на холодильник к выбранной дате. На тесте проверила бы, смогут ли участники пройти оба сценария без подсказок и объяснить, сколько им нужно откладывать.</p>
+      </section>
+      <section class="savings-story" aria-labelledby="savings-journey">
+        <h3 id="savings-journey" data-en="Customer journey map">Карта пути пользователя (CJM)</h3>
+        <p data-en="The proposed journey follows a group from a shared goal to a purchase, with two possible outcomes when the deadline comes.">Целевой сценарий от общей цели до покупки. К выбранному сроку группа либо собирает всю сумму, либо может доплатить разницу.</p>
+        <div class="savings-journey">
+          <details name="savings-journey-stage" open>
+            <summary><span data-en="Need">Потребность</span></summary>
+            <dl>
+              <div>
+                <dt data-en="User action">Действие пользователя</dt>
+                <dd data-en="Realizes the group needs to save for a shared goal, such as a down payment, appliance, holiday, or gift.">Понимает, что нужно накопить на общую цель: взнос, технику, отпуск или подарок.</dd>
+              </div>
+              <div>
+                <dt data-en="Emotion and motivation">Эмоция и мотивация</dt>
+                <dd data-en="Hope and uncertainty about whether they can save enough alone.">Надежда и сомнение, получится ли накопить в одиночку.</dd>
+              </div>
+              <div>
+                <dt data-en="Risk or decision point">Риск или развилка</dt>
+                <dd data-en="May not know that the bank offers a suitable tool.">Может не знать, что у банка есть подходящий инструмент.</dd>
+              </div>
+            </dl>
+          </details>
+          <details name="savings-journey-stage">
+            <summary><span data-en="Discovery">Знакомство</span></summary>
+            <dl>
+              <div>
+                <dt data-en="User action">Действие пользователя</dt>
+                <dd data-en="Notices Family Savings in the app through a banner, push notification, or recommendation.">Замечает предложение «Семейная копилка» в приложении: баннер, пуш или рекомендацию.</dd>
+              </div>
+              <div>
+                <dt data-en="What the product shows">Что видно в продукте</dt>
+                <dd data-en="The product card explains how the savings account works.">Карточка продукта объясняет, как работает копилка.</dd>
+              </div>
+              <div>
+                <dt data-en="Emotion and motivation">Эмоция и мотивация</dt>
+                <dd data-en="Curiosity.">Любопытство.</dd>
+              </div>
+              <div>
+                <dt data-en="Risk or decision point">Риск или развилка</dt>
+                <dd data-en="May ignore the banner if the benefit is unclear at first.">Может пропустить баннер, если сразу не понял выгоду.</dd>
+              </div>
+            </dl>
+          </details>
+          <details name="savings-journey-stage">
+            <summary><span data-en="Open a savings account">Создание копилки</span></summary>
+            <dl>
+              <div>
+                <dt data-en="User action">Действие пользователя</dt>
+                <dd data-en="Chooses a product in T-Shopping, a trip in T-Travel, or enters an amount manually.">Выбирает товар в Т‑Шопинге, тур в Т‑Путешествиях или задаёт сумму вручную.</dd>
+              </div>
+              <div>
+                <dt data-en="What the product shows">Что видно в продукте</dt>
+                <dd data-en="A goal picker automatically fills in the amount and deadline.">Экран выбора цели. Сумма и срок подставляются автоматически.</dd>
+              </div>
+              <div>
+                <dt data-en="Emotion and motivation">Эмоция и мотивация</dt>
+                <dd data-en="Engagement grows as the goal becomes tangible.">Вовлечённость. Цель становится конкретной.</dd>
+              </div>
+              <div>
+                <dt data-en="Risk or decision point">Риск или развилка</dt>
+                <dd data-en="An amount without a specific purchase may be less motivating.">Абстрактная сумма без конкретного товара может мотивировать слабее.</dd>
+              </div>
+            </dl>
+          </details>
+          <details name="savings-journey-stage">
+            <summary><span data-en="Increase the rate">Рост ставки</span></summary>
+            <dl>
+              <div>
+                <dt data-en="User action">Действие пользователя</dt>
+                <dd data-en="Saves alone at the base rate or invites up to five others, for a maximum of six participants.">Копит один по базовой ставке или приглашает до пяти человек. Всего в группе может быть до шести участников.</dd>
+              </div>
+              <div>
+                <dt data-en="What the product shows">Что видно в продукте</dt>
+                <dd data-en="An indicator shows how many more people to invite and what percentage the rate will rise to.">Индикатор показывает, сколько ещё людей пригласить и до какого процента вырастет ставка.</dd>
+              </div>
+              <div>
+                <dt data-en="Emotion and motivation">Эмоция и мотивация</dt>
+                <dd data-en="Excitement and a desire to earn a higher rate.">Азарт и желание получить более высокую ставку.</dd>
+              </div>
+              <div>
+                <dt data-en="Risk or decision point">Риск или развилка</dt>
+                <dd data-en="A small rate increase may not motivate users to invite others.">Небольшой прирост ставки может не мотивировать приглашать людей.</dd>
+              </div>
+            </dl>
+          </details>
+          <details name="savings-journey-stage">
+            <summary><span data-en="Save together">Накопление</span></summary>
+            <dl>
+              <div>
+                <dt data-en="User action">Действие пользователя</dt>
+                <dd data-en="Participants contribute at their own pace.">Участники пополняют копилку в своём темпе.</dd>
+              </div>
+              <div>
+                <dt data-en="What the product shows">Что видно в продукте</dt>
+                <dd data-en="A progress bar, each participant’s contributions, and reminders about the final step.">Прогресс-бар, взносы каждого участника и напоминания о финальном шаге.</dd>
+              </div>
+              <div>
+                <dt data-en="Emotion and motivation">Эмоция и мотивация</dt>
+                <dd data-en="A sense of shared effort and progress.">Ощущение общего дела и прогресса.</dd>
+              </div>
+              <div>
+                <dt data-en="Risk or decision point">Риск или развилка</dt>
+                <dd data-en="Some participants join and never contribute.">Часть участников присоединяется, но не пополняет счёт.</dd>
+              </div>
+            </dl>
+          </details>
+          <details name="savings-journey-stage">
+            <summary><span data-en="Approaching the deadline">Приближение к сроку</span></summary>
+            <dl>
+              <div>
+                <dt data-en="User action">Действие пользователя</dt>
+                <dd data-en="Tracks the amount still needed.">Следит за оставшейся суммой.</dd>
+              </div>
+              <div>
+                <dt data-en="What the product shows">Что видно в продукте</dt>
+                <dd data-en="A notification shows how much is left. The Buy button is active and stays secondary.">Уведомление показывает, сколько осталось накопить. Кнопка «Купить» активна и остаётся второстепенной.</dd>
+              </div>
+              <div>
+                <dt data-en="Emotion and motivation">Эмоция и мотивация</dt>
+                <dd data-en="Some anxiety if the savings are falling short.">Лёгкая тревога, если сумма не набирается.</dd>
+              </div>
+              <div>
+                <dt data-en="Risk or decision point">Риск или развилка</dt>
+                <dd data-en="May buy early by paying the difference and lose motivation to keep saving.">Может купить раньше с доплатой и потерять мотивацию копить дальше.</dd>
+              </div>
+            </dl>
+          </details>
+          <details name="savings-journey-stage">
+            <summary><span data-en="Goal reached on time">Цель достигнута в срок</span></summary>
+            <dl>
+              <div>
+                <dt data-en="User action">Действие пользователя</dt>
+                <dd data-en="Sees that the full amount has been saved.">Видит, что вся сумма собрана.</dd>
+              </div>
+              <div>
+                <dt data-en="What the product shows">Что видно в продукте</dt>
+                <dd data-en="Buy becomes the primary action.">«Купить» становится основной кнопкой.</dd>
+              </div>
+              <div>
+                <dt data-en="Emotion and motivation">Эмоция и мотивация</dt>
+                <dd data-en="Pride and satisfaction.">Гордость и удовлетворение.</dd>
+              </div>
+            </dl>
+          </details>
+          <details name="savings-journey-stage">
+            <summary><span data-en="Deadline missed">Цель не достигнута в срок</span></summary>
+            <dl>
+              <div>
+                <dt data-en="User action">Действие пользователя</dt>
+                <dd data-en="Decides to pay the remaining amount.">Решает доплатить недостающую сумму.</dd>
+              </div>
+              <div>
+                <dt data-en="What the product shows">Что видно в продукте</dt>
+                <dd data-en="Buy and pay the difference is active as a secondary action.">Кнопка «Купить с доплатой» активна и остаётся второстепенной.</dd>
+              </div>
+              <div>
+                <dt data-en="Emotion and motivation">Эмоция и мотивация</dt>
+                <dd data-en="A sense of compromise and slight disappointment.">Ощущение компромисса и лёгкое разочарование.</dd>
+              </div>
+              <div>
+                <dt data-en="Risk or decision point">Риск или развилка</dt>
+                <dd data-en="Paying the difference too often may undermine the purpose of saving.">Если прибегать к доплате слишком часто, накопление может потерять смысл.</dd>
+              </div>
+            </dl>
+          </details>
+          <details name="savings-journey-stage">
+            <summary><span data-en="Purchase">Покупка</span></summary>
+            <dl>
+              <div>
+                <dt data-en="User action">Действие пользователя</dt>
+                <dd data-en="Buys the product or books the trip.">Покупает товар или бронирует тур.</dd>
+              </div>
+              <div>
+                <dt data-en="What the product shows">Что видно в продукте</dt>
+                <dd data-en="Opens T-Shopping or T-Travel.">Переход в Т‑Шопинг или Т‑Путешествия.</dd>
+              </div>
+              <div>
+                <dt data-en="Emotion and motivation">Эмоция и мотивация</dt>
+                <dd data-en="Joy at reaching the outcome.">Радость от результата.</dd>
+              </div>
+            </dl>
+          </details>
+          <details name="savings-journey-stage">
+            <summary><span data-en="Cashback">Кэшбек</span></summary>
+            <dl>
+              <div>
+                <dt data-en="User action">Действие пользователя</dt>
+                <dd data-en="Receives cashback on the purchase.">Получает кэшбек за покупку.</dd>
+              </div>
+              <div>
+                <dt data-en="What the product shows">Что видно в продукте</dt>
+                <dd data-en="Bonus cashback for reaching the goal on time. Standard cashback when paying the difference.">Повышенный кэшбек за достижение цели в срок. Обычный кэшбек при покупке с доплатой.</dd>
+              </div>
+              <div>
+                <dt data-en="Emotion and motivation">Эмоция и мотивация</dt>
+                <dd data-en="A welcome bonus and a sense of value.">Приятный бонус и ощущение выгоды.</dd>
+              </div>
+            </dl>
+          </details>
+          <details name="savings-journey-stage">
+            <summary><span data-en="End of the journey">Завершение</span></summary>
+            <dl>
+              <div>
+                <dt data-en="User action">Действие пользователя</dt>
+                <dd data-en="The savings account closes.">Копилка закрывается.</dd>
+              </div>
+              <div>
+                <dt data-en="What the product shows">Что видно в продукте</dt>
+                <dd data-en="A prompt to open a new savings account.">Предложение создать новую копилку.</dd>
+              </div>
+              <div>
+                <dt data-en="Emotion and motivation">Эмоция и мотивация</dt>
+                <dd data-en="Willingness to do it again.">Готовность повторить опыт.</dd>
+              </div>
+              <div>
+                <dt data-en="Risk or decision point">Риск или развилка</dt>
+                <dd data-en="May not return after a bad experience, such as missing the deadline or a conflict within the group.">Может не вернуться после неудачного опыта, например если не успели накопить в срок или участники поссорились.</dd>
+              </div>
+            </dl>
+          </details>
+        </div>
+      </section>
+      <section class="savings-story" aria-labelledby="savings-metrics">
+        <h3 id="savings-metrics" data-en="Metrics">Метрики</h3>
+        <div class="savings-metrics">
+          <div>
+            <h4>North Star Metric</h4>
+            <p data-en="Number of users who reach their savings goal by their chosen deadline.">Количество пользователей, которые достигли цели накопления в установленный срок.</p>
+          </div>
+          <div>
+            <h4 data-en="Key metrics">Главные метрики</h4>
+            <ul>
+              <li data-en="Share of savings accounts with a goal and without a goal.">Доля копилок с целью и без цели.</li>
+              <li data-en="Contribution frequency by week and month.">Регулярность пополнений за неделю и за месяц.</li>
+              <li data-en="Number of Buy button clicks after the savings goal is reached.">Количество нажатий на кнопку «Купить» после достижения цели.</li>
+            </ul>
+          </div>
+          <div>
+            <h4 data-en="Guardrail metrics">Guardrail-метрики</h4>
+            <ul>
+              <li data-en="Customer satisfaction (CSAT).">Удовлетворённость пользователей (CSAT).</li>
+              <li data-en="Number of support requests.">Количество обращений в поддержку.</li>
+            </ul>
+          </div>
+          <div>
+            <h4 data-en="Retention">Удержание</h4>
+            <p data-en="Reopening the savings account screen.">Повторное открытие копилки.</p>
+          </div>
+        </div>
+      </section>
+      <section class="savings-story" aria-labelledby="savings-success">
+        <h3 id="savings-success" data-en="Success criteria">Критерии успеха</h3>
+        <ul>
+          <li data-en="Users who open a savings account with a goal form a group of 4–6 people on average in the first week.">Пользователь, открывший копилку с выбранной целью, в среднем собирает группу из 4–6 человек за первую неделю.</li>
+          <li data-en="At least 50% of all savings accounts opened reach 100% of their target.">Не менее 50% созданных копилок достигают 100% цели.</li>
+          <li data-en="Once the goal is reached, users see Buy as the primary action and complete the purchase within a few days.">После достижения цели пользователь видит «Купить» как основную кнопку и совершает покупку в течение нескольких дней.</li>
+          <li data-en="Some users who miss the deadline still select Buy and pay the difference.">Часть пользователей, не успевших накопить в срок, всё равно нажимают «Купить» и доплачивают разницу.</li>
+          <li data-en="The product brings new customers to T-Shopping and T-Travel through invited participants who have never used the bank’s products.">Копилка привлекает новых клиентов в Т‑Шопинг и Т‑Путешествия среди приглашённых участников, которые раньше не пользовались продуктами банка.</li>
+        </ul>
+      </section>
+      <section class="savings-story savings-testing" aria-labelledby="savings-testing">
+        <h3 id="savings-testing" data-en="Testing plan">План тестирования</h3>
+        <ol>
+          <li data-en="Run a quantitative survey with a panel of T-Bank users.">Провести количественный опрос на панели пользователей Т‑Банка.</li>
+          <li data-en="Test the journey with a clickable Figma prototype.">Проверить сценарий на кликабельном прототипе в Figma.</li>
+          <li data-en="Run an A/B test. Group A gets the standard individual savings account. Group B gets the savings account with a rate that rises with group size and a goal tied to the ecosystem.">Провести A/B‑тест. Группа A пользуется классической копилкой без привязки к группе. Группа B получает копилку с растущей ставкой и целью из экосистемы.</li>
+          <li data-en="Run a second A/B test within group B to compare how fast the rate rises. One variant has steeper increases as the group approaches six members, and the other has more gradual increases.">Провести дополнительный A/B‑тест внутри группы B. Сравнить два шага прироста ставки по мере роста группы до шести человек: более резкий и более плавный.</li>
+          <li data-en="Roll out gradually, monitor the metric tree, and use data from early cohorts to adjust interest rates, cashback, and group-size thresholds.">Запускать продукт постепенно, отслеживать дерево метрик и по данным первых когорт корректировать ставку, кэшбек и пороги по числу участников.</li>
+        </ol>
+        <h4 data-en="What to watch for">На что обращаем внимание</h4>
+        <ul>
+          <li data-en="How quickly a group reaches the six-person limit.">Как быстро группа растёт до максимума в шесть человек.</li>
+          <li data-en="How inactive participants behave after joining.">Как ведут себя участники, которые присоединились к копилке, но почти не пополняют её.</li>
+          <li data-en="How users respond to the option to pay the difference when the goal is missed.">Как пользователи реагируют на возможность доплатить, если цель не достигнута.</li>
+          <li data-en="How much cashback for reaching the goal on time affects the decision to buy.">Насколько кэшбек за достижение цели в срок влияет на решение о покупке.</li>
+        </ul>
+      </section>
+      <section class="savings-design" aria-labelledby="savings-design">
+        <div class="savings-story"><h3 id="savings-design" data-en="App design">Дизайн приложения</h3></div>
+        <section class="savings-chapter" aria-labelledby="savings-open">
+          <div class="savings-story">
+            <h4 id="savings-open" data-en="Open a savings account">Открыть копилку</h4>
+            <p data-en="The journey starts in the T-Bank app. After choosing a currency, the user lands on an empty savings account and can invite others or set a goal.">Путь начинается в приложении Т‑Банка. После выбора валюты открывается пустая копилка. С неё можно перейти к приглашению близких или постановке цели.</p>
+          </div>
+          <div class="savings-reel" role="group" tabindex="0" aria-labelledby="savings-open">
+            <button class="savings-screen" type="button" data-screen="01" aria-haspopup="dialog">
+              <img class="savings-phone" src="savings/01.webp" width="942" height="2047" loading="lazy" decoding="async" draggable="false" alt="">
+              <span data-en="T-Bank home">Главная Т-Банка</span>
+            </button>
+            <button class="savings-screen" type="button" data-screen="04" aria-haspopup="dialog">
+              <img class="savings-phone" src="savings/04.webp" width="942" height="2047" loading="lazy" decoding="async" draggable="false" alt="">
+              <span data-en="Savings catalogue">Каталог «Копить»</span>
+            </button>
+            <button class="savings-screen" type="button" data-screen="05" aria-haspopup="dialog">
+              <img class="savings-phone" src="savings/05.webp" width="942" height="2047" loading="lazy" decoding="async" draggable="false" alt="">
+              <span data-en="Family Savings terms">Условия копилки</span>
+            </button>
+            <button class="savings-screen" type="button" data-screen="06" aria-haspopup="dialog">
+              <img class="savings-phone" src="savings/06.webp" width="942" height="2047" loading="lazy" decoding="async" draggable="false" alt="">
+              <span data-en="Account currency">Выбор валюты</span>
+            </button>
+            <button class="savings-screen" type="button" data-screen="07" aria-haspopup="dialog">
+              <img class="savings-phone" src="savings/07.webp" width="942" height="2047" loading="lazy" decoding="async" draggable="false" alt="">
+              <span data-en="Account opened">Счёт открыт</span>
+            </button>
+            <button class="savings-screen" type="button" data-screen="08" aria-haspopup="dialog">
+              <img class="savings-phone" src="savings/08.webp" width="942" height="2047" loading="lazy" decoding="async" draggable="false" alt="">
+              <span data-en="Empty savings account">Копилка без пополнений</span>
+            </button>
+          </div>
+        </section>
+        <section class="savings-chapter" aria-labelledby="savings-invite">
+          <div class="savings-story">
+            <h4 id="savings-invite" data-en="Invite others">Пригласить близких</h4>
+            <p data-en="Pick someone from the contact list or enter a new number. The app confirms the invitation and returns to the savings account.">Участника можно выбрать из контактов или пригласить по новому номеру. После отправки приложение подтверждает действие и возвращает на экран копилки.</p>
+          </div>
+          <div class="savings-reel" role="group" tabindex="0" aria-labelledby="savings-invite">
+            <button class="savings-screen" type="button" data-screen="09" aria-haspopup="dialog">
+              <img class="savings-phone" src="savings/09.webp" width="942" height="2047" loading="lazy" decoding="async" draggable="false" alt="">
+              <span data-en="Participant permissions">Доступ участника</span>
+            </button>
+            <button class="savings-screen" type="button" data-screen="10" aria-haspopup="dialog">
+              <img class="savings-phone" src="savings/10.webp" width="942" height="2047" loading="lazy" decoding="async" draggable="false" alt="">
+              <span data-en="Choose a contact">Выбор контакта</span>
+            </button>
+            <button class="savings-screen" type="button" data-screen="11" aria-haspopup="dialog">
+              <img class="savings-phone" src="savings/11.webp" width="942" height="2047" loading="lazy" decoding="async" draggable="false" alt="">
+              <span data-en="Add a new number">Новый номер</span>
+            </button>
+            <button class="savings-screen" type="button" data-screen="12" aria-haspopup="dialog">
+              <img class="savings-phone" src="savings/12.webp" width="942" height="2047" loading="lazy" decoding="async" draggable="false" alt="">
+              <span data-en="Invitation details">Данные для приглашения</span>
+            </button>
+            <button class="savings-screen" type="button" data-screen="13" aria-haspopup="dialog">
+              <img class="savings-phone" src="savings/13.webp" width="942" height="2047" loading="lazy" decoding="async" draggable="false" alt="">
+              <span data-en="Invitation sent">Приглашение отправлено</span>
+            </button>
+            <button class="savings-screen" type="button" data-screen="14" aria-haspopup="dialog">
+              <img class="savings-phone" src="savings/14.webp" width="942" height="2047" loading="lazy" decoding="async" draggable="false" alt="">
+              <span data-en="Account after sharing">Копилка после приглашения</span>
+            </button>
+          </div>
+        </section>
+        <section class="savings-chapter" aria-labelledby="savings-goal">
+          <div class="savings-story">
+            <h4 id="savings-goal" data-en="Set a goal">Поставить цель</h4>
+            <p data-en="Enter an amount and deadline manually, or choose a product in T-Shopping. In the refrigerator example, the app uses the price to calculate how much the group needs to set aside by the target date.">Сумму и срок можно задать вручную. Если семья уже знает, что хочет купить, она может выбрать товар в Т‑Шопинге. В примере с холодильником копилка берёт цену товара и рассчитывает, сколько нужно откладывать к выбранной дате.</p>
+          </div>
+          <div class="savings-reel" role="group" tabindex="0" aria-labelledby="savings-goal">
+            <button class="savings-screen" type="button" data-screen="15" aria-haspopup="dialog">
+              <img class="savings-phone" src="savings/15.webp" width="942" height="2047" loading="lazy" decoding="async" draggable="false" alt="">
+              <span data-en="Enter the savings amount">Ввод суммы</span>
+            </button>
+            <button class="savings-screen" type="button" data-screen="17" aria-haspopup="dialog">
+              <img class="savings-phone" src="savings/17.webp" width="942" height="2047" loading="lazy" decoding="async" draggable="false" alt="">
+              <span data-en="Choose a month and year">Месяц и год</span>
+            </button>
+            <button class="savings-screen" type="button" data-screen="18" aria-haspopup="dialog">
+              <img class="savings-phone" src="savings/18.webp" width="942" height="2047" loading="lazy" decoding="async" draggable="false" alt="">
+              <span data-en="Target date selected">Срок выбран</span>
+            </button>
+            <button class="savings-screen" type="button" data-screen="19" aria-haspopup="dialog">
+              <img class="savings-phone" src="savings/19.webp" width="942" height="2047" loading="lazy" decoding="async" draggable="false" alt="">
+              <span data-en="Goal categories">Категории целей</span>
+            </button>
+            <button class="savings-screen" type="button" data-screen="20" aria-haspopup="dialog">
+              <img class="savings-phone" src="savings/20.webp" width="942" height="2047" loading="lazy" decoding="async" draggable="false" alt="">
+              <span data-en="Partner marketplace">Витрина партнёров</span>
+            </button>
+            <button class="savings-screen" type="button" data-screen="21" aria-haspopup="dialog">
+              <img class="savings-phone" src="savings/21.webp" width="942" height="2047" loading="lazy" decoding="async" draggable="false" alt="">
+              <span data-en="Partner store">Магазин партнёра</span>
+            </button>
+            <button class="savings-screen" type="button" data-screen="22" aria-haspopup="dialog">
+              <img class="savings-phone" src="savings/22.webp" width="942" height="2047" loading="lazy" decoding="async" draggable="false" alt="">
+              <span data-en="Product details">Карточка товара</span>
+            </button>
+            <button class="savings-screen" type="button" data-screen="23" aria-haspopup="dialog">
+              <img class="savings-phone" src="savings/23.webp" width="942" height="2047" loading="lazy" decoding="async" draggable="false" alt="">
+              <span data-en="Monthly contribution estimate">Расчёт пополнения</span>
+            </button>
+          </div>
+        </section>
+        <section class="savings-chapter" aria-labelledby="savings-finish">
+          <div class="savings-story">
+            <h4 id="savings-finish" data-en="Reach the goal">Достичь цели</h4>
+            <p data-en="The account shows how much the group has saved. When they reach the target, the app confirms it and offers to continue to the purchase.">Главный экран показывает, сколько уже накоплено. Когда группа собирает нужную сумму, копилка сообщает, что цель достигнута, и предлагает перейти к покупке.</p>
+          </div>
+          <div class="savings-reel" role="group" tabindex="0" aria-labelledby="savings-finish">
+            <button class="savings-screen" type="button" data-screen="24" aria-haspopup="dialog">
+              <img class="savings-phone" src="savings/24.webp" width="942" height="2047" loading="lazy" decoding="async" draggable="false" alt="">
+              <span data-en="Goal set">Цель установлена</span>
+            </button>
+            <button class="savings-screen" type="button" data-screen="25" aria-haspopup="dialog">
+              <img class="savings-phone" src="savings/25.webp" width="942" height="2047" loading="lazy" decoding="async" draggable="false" alt="">
+              <span data-en="Goal reached">Цель достигнута</span>
+            </button>
+          </div>
+        </section>
+      </section>
+      <dialog class="savings-viewer" aria-labelledby="savings-screen-title">
+        <div class="viewer-controls savings-view-controls">
+          <button type="button" class="viewer-return savings-view-close" data-en="Back to project" autofocus>К проекту</button>
+          <button type="button" class="savings-view-previous" aria-label="Предыдущий экран / Previous screen"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><polyline points="12,3 6,9 12,15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button type="button" class="savings-view-next" aria-label="Следующий экран / Next screen"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><polyline points="6,3 12,9 6,15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <figure>
+          <img class="savings-phone" width="942" height="2047" alt="" draggable="false">
+          <figcaption id="savings-screen-title" aria-live="polite"></figcaption>
+        </figure>
+      </dialog>
+    </article>
+
+<article class="panel case-panel case-study" id="panel-booking" aria-labelledby="title-booking" hidden>
+      <header class="study-header"><p class="eyebrow" data-en="Maps · Student project">Карты · Учебный проект</p><h2 id="title-booking" tabindex="-1" data-en="Table booking in Maps">Бронирование столика из карт</h2><p class="study-lead" data-en="From choosing a café to a confirmed table for four.">От выбора кафе до подтверждённого столика на четверых.</p></header>
+      <section class="study-section"><div class="study-copy"><h3 data-en="The brief">Задача</h3><p data-en="Design a booking flow within Maps for a Friday meetup at 7:00 pm. Account for a budget of ₽1,500 per person and vegetarian options. Show what happens when the café offers a different time.">Спроектировать бронирование из карт для встречи в пятницу в 19:00. Учесть бюджет до 1 500 ₽ на человека и вегетарианское меню. Показать, что происходит, если кафе предлагает другое время.</p></div></section>
+      <section class="study-section"><div class="study-copy"><h3 data-en="My contribution">Мой вклад</h3><p data-en="Reviewed booking flows, mapped the customer journey, and designed two entry points: filters in the venue view and a request to an AI assistant.">Разобрала сценарии бронирования, собрала CJM и спроектировала два входа: фильтры в контексте заведения и запрос ИИ-помощнику.</p></div><figure class="study-figure"><div class="wire-stage wire-pair"><div class="wire-phone"><strong data-en="Filters">Фильтры</strong><span class="wire-map"><i></i><i></i><i></i></span><span class="wire-row" data-en="Fri · 7:00 pm · 4 guests">Пт · 19:00 · 4 гостя</span><span class="wire-row" data-en="Up to ₽1,500 · Vegetarian options">До 1 500 ₽ · Вегетарианское меню</span></div><div class="wire-phone"><strong data-en="AI assistant">ИИ-помощник</strong><span class="wire-text" data-en="A table for four at 7:00 pm on Friday">Столик на четверых в пятницу к 19:00</span><span class="wire-row" data-en="Matches the request">Подходящий вариант</span><span class="wire-row" data-en="Works at a later time">Подходит, если позже</span><span class="wire-row" data-en="Menu and time need checking">Меню и время нужно уточнить</span></div></div><figcaption data-en="Final visuals in progress">крутой визуал в разработке</figcaption></figure></section>
+      <section class="savings-story" aria-labelledby="booking-journey">
+        <h3 id="booking-journey" data-en="Customer journey map">Карта пути пользователя (CJM)</h3>
+        <p data-en="On a phone, the organizer looks for a café for four on Friday at 7:00 pm, with a budget of up to ₽1,500 per person and vegetarian options.">Пользователь с телефона ищет кафе на пятницу, 19:00 · 4 человека · до 1 500 ₽ на человека · вегетарианские блюда</p>
+        <div class="savings-journey">
+          <details name="booking-journey-stage" open>
+            <summary><span data-en="Compare cafés">Сравнение кафе</span></summary>
+            <dl>
+              <div>
+                <dt data-en="User action">Действие</dt>
+                <dd data-en="Compares three cafés by time, price, and menu.">Сопоставляет три кафе по времени, цене и меню.</dd>
+              </div>
+              <div>
+                <dt data-en="Thoughts">Мысли</dt>
+                <dd data-en="“Which café works for everyone?”">«Где всем будет удобно?»</dd>
+              </div>
+              <div>
+                <dt data-en="Risk">Риск</dt>
+                <dd data-en="Café C’s menu and availability are unknown.">У кафе В неизвестны меню и время.</dd>
+              </div>
+              <div>
+                <dt data-en="Design response">Решение</dt>
+                <dd data-en="Show the same criteria on every card.">Показать одинаковые критерии на всех карточках.</dd>
+              </div>
+            </dl>
+          </details>
+          <details name="booking-journey-stage">
+            <summary><span data-en="Send a request">Отправка запроса</span></summary>
+            <dl>
+              <div>
+                <dt data-en="User action">Действие</dt>
+                <dd data-en="Chooses café A and requests a table at 7:00 pm.">Выбирает кафе А и отправляет запрос на 19:00.</dd>
+              </div>
+              <div>
+                <dt data-en="Thoughts">Мысли</dt>
+                <dd data-en="“I hope there’s still a table.”">«Надеюсь, столик ещё есть».</dd>
+              </div>
+              <div>
+                <dt data-en="Risk">Риск</dt>
+                <dd data-en="An available time may look like a guarantee.">Доступное время можно принять за гарантию.</dd>
+              </div>
+              <div>
+                <dt data-en="Design response">Решение</dt>
+                <dd data-en="Explain before submission that the café will reply separately.">Перед отправкой объяснить, что кафе ответит отдельно.</dd>
+              </div>
+            </dl>
+          </details>
+          <details name="booking-journey-stage">
+            <summary><span data-en="Wait for a reply">Ожидание ответа</span></summary>
+            <dl>
+              <div>
+                <dt data-en="User action">Действие</dt>
+                <dd data-en="Checks whether the café has accepted the request.">Проверяет, приняло ли кафе запрос.</dd>
+              </div>
+              <div>
+                <dt data-en="Thoughts">Мысли</dt>
+                <dd data-en="“Can I message my friends yet?”">«Могу уже писать друзьям?»</dd>
+              </div>
+              <div>
+                <dt data-en="Risk">Риск</dt>
+                <dd data-en="A submitted request can be mistaken for a booking.">Отправленный запрос легко принять за бронь.</dd>
+              </div>
+              <div>
+                <dt data-en="Design response">Решение</dt>
+                <dd data-en="Show “Waiting for the café” and the requested time.">Показать статус «Ждём ответа кафе» и запрошенное время.</dd>
+              </div>
+            </dl>
+          </details>
+          <details name="booking-journey-stage">
+            <summary><span data-en="Review the new time">Новое время</span></summary>
+            <dl>
+              <div>
+                <dt data-en="User action">Действие</dt>
+                <dd data-en="Sees 7:30 pm, checks with friends outside the app, and accepts.">Видит 19:30, обсуждает его с друзьями вне приложения и принимает.</dd>
+              </div>
+              <div>
+                <dt data-en="Thoughts">Мысли</dt>
+                <dd data-en="“Can everyone make it half an hour later?”">«Всем подойдёт на полчаса позже?»</dd>
+              </div>
+              <div>
+                <dt data-en="Risk">Риск</dt>
+                <dd data-en="The original and proposed times may be confused.">Можно перепутать старое и предложенное время.</dd>
+              </div>
+              <div>
+                <dt data-en="Design response">Решение</dt>
+                <dd data-en="Mark 7:00 pm as unavailable and highlight 7:30 pm.">Сообщить, что 19:00 недоступно, и выделить 19:30.</dd>
+              </div>
+            </dl>
+          </details>
+          <details name="booking-journey-stage">
+            <summary><span data-en="Get confirmation">Подтверждение</span></summary>
+            <dl>
+              <div>
+                <dt data-en="User action">Действие</dt>
+                <dd data-en="Waits for a separate reply from the café after accepting.">После принятия ждёт отдельного ответа кафе.</dd>
+              </div>
+              <div>
+                <dt data-en="Thoughts">Мысли</dt>
+                <dd data-en="“Is the café definitely expecting us?”">«Кафе точно нас ждёт?»</dd>
+              </div>
+              <div>
+                <dt data-en="Risk">Риск</dt>
+                <dd data-en="Accepting the new time may look like confirmation.">Согласие пользователя можно принять за подтверждение.</dd>
+              </div>
+              <div>
+                <dt data-en="Design response">Решение</dt>
+                <dd data-en="Show the waiting state first, then “Confirmed by the café.”">Сначала показать ожидание, затем «Подтверждено кафе».</dd>
+              </div>
+            </dl>
+          </details>
+          <details name="booking-journey-stage">
+            <summary><span data-en="Share the details">Передача деталей</span></summary>
+            <dl>
+              <div>
+                <dt data-en="User action">Действие</dt>
+                <dd data-en="Shares the booking card and later opens it from the bookings list.">Делится карточкой и позже открывает её из списка броней.</dd>
+              </div>
+              <div>
+                <dt data-en="Thoughts">Мысли</dt>
+                <dd data-en="“What should I send to the group chat?”">«Что отправить в общий чат?»</dd>
+              </div>
+              <div>
+                <dt data-en="Risk">Риск</dt>
+                <dd data-en="Friends may receive the original time.">Друзья могут получить прежнее время.</dd>
+              </div>
+              <div>
+                <dt data-en="Design response">Решение</dt>
+                <dd data-en="Share only the confirmed details for 7:30 pm.">Поделиться только подтверждёнными деталями на 19:30.</dd>
+              </div>
+            </dl>
+          </details>
+        </div>
+      </section>
+      <section class="study-section"><div class="study-copy"><h3 data-en="Design decisions">Ключевые решения</h3><p data-en="Used the same order for time, average price, and vegetarian options on every card. This makes it easier to spot a time compromise or a menu that needs checking.">Показала время, средний чек и наличие вегетарианских блюд в одном порядке на каждой карточке. Так проще увидеть, где придётся уступить по времени или уточнить меню.</p><p data-en="Designed distinct states for the request, rescheduling, and confirmation. A widget on the map returns to the current status. After the organizer accepts 7:30 pm, the café still needs to confirm. The message to friends uses the confirmed time.">Спроектировала отдельные статусы для запроса, переноса и подтверждения. Виджет на карте возвращает к актуальному статусу. После согласия на 19:30 кафе ещё должно подтвердить бронь. В сообщение друзьям попадает подтверждённое время.</p></div><figure class="study-figure"><div class="wire-stage "><div class="wire-phone"><strong data-en="Request sent">Запрос отправлен</strong><span class="wire-status"></span><span class="wire-row" data-en="Requested 7:00 pm">Запрос на 19:00</span><span class="wire-text" data-en="Waiting for the café">Ждём ответа кафе</span></div><div class="wire-phone"><strong data-en="The café offered 7:30 pm">Кафе предложило 19:30</strong><span class="wire-row" data-en="7:00 pm · No longer available">19:00 · Мест больше нет</span><span class="wire-action" data-en="Accept 7:30 pm">Принять 19:30</span><span class="wire-text" data-en="Then wait for the café to confirm">Затем ждём подтверждения кафе</span></div><div class="wire-phone"><strong data-en="Booking confirmed">Бронь подтверждена</strong><span class="wire-status is-confirmed"></span><span class="wire-row" data-en="Friday · 7:30 pm · 4 guests">Пятница · 19:30 · 4 гостя</span><span class="wire-action" data-en="Share">Поделиться</span></div></div><figcaption data-en="Final visuals in progress">крутой визуал в разработке</figcaption></figure></section>
+      <section class="study-section"><div class="study-copy"><h3 data-en="Outcome">Что получилось</h3><p data-en="Built an interactive prototype. It covers comparing cafés, submitting a request, accepting a new time, receiving confirmation, and sharing the details. The prototype simulates the café’s replies.">Собрала интерактивный прототип. В нём можно сравнить кафе, отправить запрос, принять новое время, получить подтверждение и поделиться деталями. Ответы кафе смоделированы в прототипе.</p></div></section>
     </article>
 
 <article class="panel case-panel" id="panel-personal" aria-labelledby="title-personal" hidden>
@@ -445,11 +1021,14 @@
         </figure>
       </div>
     </article>
-    <nav class="case-navigation" aria-label="Кейсы / Cases" hidden>
-      <button type="button" id="previous-case" data-en="Previous case">Предыдущий кейс</button>
-      <button type="button" id="next-case" data-en="Next case">Следующий кейс</button>
-    </nav>
   </div>
 </main>
+<div class="viewer-controls">
+  <button type="button" id="back" class="viewer-return" hidden>К кейсам</button>
+</div>
+<nav class="case-navigation" aria-label="Кейсы / Cases" hidden>
+  <button type="button" id="previous-case" data-en="Previous case">Предыдущий кейс</button>
+  <button type="button" id="next-case" data-en="Next case">Следующий кейс</button>
+</nav>
 </body>
 </html>

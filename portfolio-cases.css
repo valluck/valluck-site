@@ -1,0 +1,250 @@
+.fragment.case-card {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  align-items: stretch;
+  gap: 14px;
+  padding: 20px;
+  background: #edb384 url("case-gradient.webp") center 15% / cover no-repeat;
+  color: #251d1c;
+  cursor: pointer;
+}
+.fragment.case-card:nth-child(2) { background-position: center 80%; }
+.fragment.case-card::after { content: none; }
+.fragment.case-card > span:last-child {
+  font-size: 1.55rem;
+  line-height: 1.04;
+  letter-spacing: -.035em;
+  font-weight: 650;
+}
+.case-card-wire {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  gap: 8px;
+  overflow: hidden;
+}
+.case-card-wire i,
+.folder-wire {
+  display: block;
+  border: 1px solid #41313373;
+  border-radius: 9px;
+  background:
+    linear-gradient(#553e423d 0 0) center 25% / 64% 4px no-repeat,
+    linear-gradient(#553e422b 0 0) center 44% / 64% 18% no-repeat,
+    linear-gradient(#553e4259 0 0) center 72% / 64% 10% no-repeat,
+    #ffffff4a;
+}
+.case-card-wire i { width: 46px; height: 76px; }
+.case-card-wire i:nth-child(2) { height: 95px; }
+.case-card:nth-child(2) .case-card-wire i:first-child,
+.folder-wire-map {
+  background:
+    repeating-linear-gradient(36deg, transparent 0 12px, #76666a59 13px 14px, transparent 15px 22px),
+    repeating-linear-gradient(122deg, #ffffff4a 0 11px, #76666a46 12px 13px, #ffffff4a 14px 20px);
+}
+.folder-wire { width: 21px; height: 32px; border-radius: 4px; }
+
+.case-mode { --study-edge: clamp(18px, 5vw, 54px); }
+.case-mode .reading {
+  --study-width: 1080px;
+  height: auto;
+  min-height: 100dvh;
+  overflow: visible;
+  background: #171717;
+}
+.case-study {
+  display: block;
+  height: auto;
+  max-width: calc(var(--study-width) + 2 * var(--study-edge));
+  margin: 0 auto;
+  padding: calc(clamp(68px, 8vw, 104px) + var(--safe-top)) var(--study-edge) calc(82px + var(--safe-bottom));
+  --wire-accent: #e3cf9d;
+  --wire-surface: #2c2922;
+}
+#panel-booking {
+  --wire-accent: #c7cddf;
+  --wire-surface: #262830;
+}
+.study-header {
+  padding-bottom: clamp(32px, 5vw, 60px);
+  border-bottom: 1px solid var(--stroke);
+}
+.study-header h2 {
+  max-width: 12ch;
+  margin: 13px 0 18px;
+  font-size: clamp(2.65rem, 7vw, 6.75rem);
+  font-weight: 690;
+  letter-spacing: -.068em;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+.study-header .eyebrow { color: var(--wire-accent); }
+.study-header .study-lead { font-size: clamp(1.05rem, 2vw, 1.38rem); }
+.study-section { margin-top: clamp(30px, 6vw, 72px); }
+.study-copy {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(0, 2fr);
+  column-gap: 24px;
+  row-gap: 9px;
+}
+.study-copy h3 {
+  grid-row: 1 / span 2;
+  margin: 0;
+  font-size: clamp(1.3rem, 3vw, 1.95rem);
+  line-height: 1.18;
+  letter-spacing: -.035em;
+}
+.study-copy p { grid-column: 2; max-width: 64ch; text-wrap: pretty; }
+.study-figure { margin: clamp(18px, 3vw, 32px) 0 0; }
+.study-figure figcaption {
+  padding-top: 10px;
+  color: var(--muted);
+  font-size: .875rem;
+}
+.wire-stage {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 190px));
+  justify-content: center;
+  align-items: stretch;
+  gap: clamp(10px, 2.5vw, 28px);
+  padding: clamp(14px, 5vw, 62px);
+  border: 1px solid #ffffff15;
+  border-radius: 22px;
+  background:
+    linear-gradient(to right, #ffffff08 1px, transparent 1px) center / 24px 24px,
+    linear-gradient(to bottom, #ffffff08 1px, transparent 1px) center / 24px 24px,
+    radial-gradient(ellipse at 50% 0, var(--wire-surface), #212121);
+}
+.wire-stage.wire-pair { grid-template-columns: repeat(2, minmax(0, 190px)); }
+.wire-phone {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  min-height: 220px;
+  padding: 12px;
+  border: 1px solid #66645f;
+  border-radius: 19px;
+  background: #191919;
+  box-shadow: 0 12px 24px #10101055;
+  font-size: .875rem;
+  line-height: 1.25;
+}
+.wire-phone::before {
+  content: "";
+  align-self: center;
+  width: 31px;
+  height: 4px;
+  border-radius: 10px;
+  background: #686868;
+}
+.wire-phone strong { margin: 7px 0 4px; font-size: .95rem; }
+.wire-row, .wire-action, .wire-text {
+  padding: 8px;
+  border: 1px solid #ffffff20;
+  border-radius: 7px;
+}
+.wire-row { background: #252525; }
+.wire-text { border-style: dashed; color: #d2d2d2; }
+.wire-action {
+  margin-top: auto;
+  background: var(--wire-accent);
+  color: #202020;
+  font-weight: 600;
+  text-align: center;
+}
+.wire-product, .wire-map, .wire-status {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 48px;
+  border: 1px solid #ffffff20;
+  border-radius: 7px;
+  background: #242424;
+}
+.wire-product::before {
+  content: "";
+  width: 38px;
+  height: 23px;
+  border: 1px dashed #a8a39a;
+  border-radius: 4px;
+}
+.wire-map {
+  background: repeating-linear-gradient(30deg, transparent 0 12px, #ffffff2e 13px 14px, transparent 15px 24px),
+    repeating-linear-gradient(120deg, #2c2c2c 0 10px, #545454 11px 13px, #2c2c2c 14px 23px);
+}
+.wire-map i {
+  position: absolute;
+  top: 22%;
+  left: 24%;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--wire-accent);
+}
+.wire-map i:nth-child(2) { left: 53%; top: 60%; }
+.wire-map i:nth-child(3) { left: 77%; top: 31%; }
+.wire-people { display: flex; align-items: center; min-height: 48px; padding-left: 4px; }
+.wire-people i {
+  width: 25px;
+  height: 25px;
+  margin-right: -3px;
+  border: 1px solid #a59b82;
+  border-radius: 50%;
+  background: #3d382d;
+}
+.wire-progress {
+  display: flex;
+  height: 12px;
+  margin: 10px 0;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #3a3936;
+}
+.wire-progress i { width: 62%; border-radius: inherit; background: var(--wire-accent); }
+.wire-progress.is-full i { width: 100%; }
+.wire-steps {
+  display: flex;
+  align-items: end;
+  gap: 5px;
+  height: 58px;
+}
+.wire-steps i { flex: 1; height: 30%; border: 1px solid #a79d85; border-radius: 4px 4px 0 0; background: #3d382d; }
+.wire-steps i:nth-child(2) { height: 50%; }
+.wire-steps i:nth-child(3) { height: 76%; }
+.wire-steps i:nth-child(4) { height: 100%; background: var(--wire-accent); }
+.wire-status::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  border: 1px dashed var(--wire-accent);
+  border-radius: 50%;
+}
+.wire-status.is-confirmed::before { border-style: solid; background: var(--wire-accent); }
+.case-navigation {
+  position: fixed;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  left: calc(var(--study-edge) + var(--safe-left));
+  bottom: calc(14px + var(--safe-bottom));
+  max-width: calc(100% - 2 * var(--study-edge) - var(--safe-left) - var(--safe-right));
+  pointer-events: none;
+}
+.case-navigation button {
+  padding: 10px 13px;
+  font-size: .875rem;
+  pointer-events: auto;
+}
+
+@media (max-width: 700px) {
+  .study-copy { grid-template-columns: 1fr; }
+  .study-copy h3 { grid-row: auto; }
+  .study-copy p { grid-column: 1; }
+}
+@media (max-width: 480px) {
+  .wire-stage { grid-template-columns: repeat(auto-fit, minmax(min(128px, 100%), 1fr)); }
+  .wire-stage.wire-pair { grid-template-columns: repeat(auto-fit, minmax(min(128px, 100%), 1fr)); }
+  .wire-phone { min-height: 205px; }
+}

@@ -30,31 +30,19 @@ const homeSwitch = document.querySelector('.home-switch');
 const homeSwitchButtons = [...homeSwitch.querySelectorAll('[data-home]')];
 const space = document.querySelector('.space');
 const reading = document.querySelector('.reading');
+const caseBack = document.querySelector('#back');
 const camera = document.querySelector('.camera');
 const world = document.querySelector('.world');
 const folderTitle = document.querySelector('#folder-title');
 const foldersButton = document.querySelector('#folders');
 const folderButtons = [...document.querySelectorAll('[data-folder]')];
-const casePanels = [...reading.querySelectorAll('.case-panel:not(#panel-projects)')];
+const casePanels = [...reading.querySelectorAll('.case-study')];
 const caseNavigation = document.querySelector('.case-navigation');
 const previousCase = document.querySelector('#previous-case');
 const nextCase = document.querySelector('#next-case');
 let caseIndex = -1;
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const stackedHome = matchMedia('(max-width: 1020px)');
-const layouts = [
-  { x: 130, y: 178, width: 240, height: 175, angle: -11, depth: -125, yaw: 15 },
-  { x: 465, y: 88, width: 245, height: 170, angle: 8, depth: 1190, yaw: -19 },
-  { x: 853, y: 188, width: 237, height: 246, angle: -8, depth: 330, yaw: -21 },
-  { x: 171, y: 470, width: 256, height: 171, angle: 6, depth: 710, yaw: 21 },
-  { x: 460, y: 342, width: 210, height: 245, angle: 3, depth: 0, yaw: -9 },
-  { x: 820, y: 505, width: 245, height: 148, angle: 9, depth: -95, yaw: -18 }
-];
-const lockedCaseLayouts = [
-  { x: 425, y: 345, width: 280, height: 170, angle: 0, depth: -70, yaw: 0 },
-  { x: 575, y: 295, width: 280, height: 170, angle: 0, depth: 270, yaw: 0 },
-  { x: 455, y: 218, width: 280, height: 170, angle: 0, depth: 610, yaw: 0 }
-];
 const focalLength = 820;
 let folder;
 let fragment;
@@ -64,6 +52,7 @@ const nearClip = 210;
 let travel = 0;
 let folderScale = 1;
 let foregroundCard;
+let folderDepth = 0;
 let track;
 let x = 0;
 let y = 0;
@@ -121,8 +110,7 @@ function fit(reference = foregroundCard) {
 
 function fly(amount, anchorX = camera.clientWidth / 2, anchorY = camera.clientHeight / 2, depth = 0) {
   const before = distance(depth);
-  const maxDepth = world.classList.contains('concept-world') ? Math.max(...conceptLayouts.map(layout => layout.depth)) : 640;
-  travel = Math.min(focalLength / fitScale() + maxDepth, Math.max(-550, travel + amount));
+  travel = Math.min(focalLength / fitScale() + folderDepth, Math.max(-550, travel + amount));
   const delta = (Math.max(distance(depth), nearClip) - Math.max(before, nearClip)) / (focalLength * folderScale);
   x += (anchorX - camera.clientWidth / 2) * delta;
   y += (anchorY - camera.clientHeight / 2) * delta;
@@ -137,17 +125,12 @@ function openFragment(button, panel, heading) {
   nextCase.disabled = caseIndex >= casePanels.length - 1;
   space.hidden = true;
   reading.hidden = false;
+  caseBack.hidden = false;
   for (const entry of reading.querySelectorAll('.panel')) entry.hidden = entry !== panel;
   heading.tabIndex = -1;
   document.body.classList.toggle('case-mode', panel.classList.contains('case-panel'));
-  const images = panel.querySelector('.case-images');
-  if (images) {
-    images.scrollTop = 0;
-    window.scrollTo(0, 0);
-    panel.querySelector('h2').focus({ preventScroll: true });
-    return;
-  }
-  heading.focus();
+  window.scrollTo(0, 0);
+  heading.focus({ preventScroll: true });
 }
 
 function translateSpace() {
@@ -160,16 +143,14 @@ function translateSpace() {
   };
   const returnLabel = returnLabels[folder.dataset.folder][isEnglish ? 'en' : 'ru'];
   conceptViewer.querySelector('.concept-return').textContent = returnLabel;
-  document.querySelector('#back').textContent = returnLabel;
+  caseBack.textContent = returnLabel;
   const relatedTitle = folder.dataset.folder === 'personal'
     ? { ru: 'Другие', en: 'Other' }
     : { ru: 'Похожие', en: 'Related' };
   document.querySelector('#concept-related-title').textContent = relatedTitle[isEnglish ? 'en' : 'ru'];
   folderTitle.textContent = folder.querySelector('strong').textContent.trim().replace(/\s+/g, ' ');
   for (const button of world.querySelectorAll('.fragment')) {
-    if (button.classList.contains('locked-case')) {
-      button.querySelector('.case-lock-content span').textContent = document.documentElement.lang === 'en' ? 'Coming soon' : 'Скоро в портфолио';
-    } else if (button.heading) button.lastElementChild.textContent = button.heading.textContent;
+    if (button.heading) button.lastElementChild.textContent = button.heading.textContent;
     else button.setAttribute('aria-label', conceptLabel(Number(button.dataset.conceptIndex)));
   }
 }
@@ -178,12 +159,12 @@ function openFolder(button) {
   const origin = button.querySelector('.folder-art').getBoundingClientRect();
   folder = button;
   const id = button.dataset.folder;
-  const panel = document.getElementById('panel-' + id);
   const isMediaFolder = id === 'concepts' || id === 'personal';
   if (isMediaFolder) selectMediaFolder(id);
-  const isLocked = id === 'projects';
-  const headings = panel ? [...panel.querySelectorAll('h2, h3, summary')] : [];
-  const folderLayouts = isMediaFolder ? conceptLayouts : isLocked ? lockedCaseLayouts : layouts;
+  const folderLayouts = isMediaFolder ? conceptLayouts : mediaLayouts.personal.map(layout => ({
+    ...layout, x: compactFolderX(layout.x), width: 280, height: 200
+  }));
+  folderDepth = Math.max(...folderLayouts.map(layout => layout.depth));
   homeSpace.hidden = true;
   homeZoom.hidden = true;
   shelf.hidden = true;
@@ -192,50 +173,59 @@ function openFolder(button) {
   space.hidden = false;
   window.scrollTo(0, 0);
   world.replaceChildren();
-  world.classList.toggle('concept-world', isMediaFolder);
-  resetConceptParallax();
+  resetFolderParallax();
   fit(folderLayouts[0]);
   const view = camera.getBoundingClientRect();
 
   folderLayouts.forEach((layout, index) => {
-    const tile = document.createElement(isLocked ? 'article' : 'button');
-    if (!isLocked) tile.type = 'button';
+    const panel = isMediaFolder ? null : casePanels[index];
+    const tile = document.createElement('button');
+    tile.type = 'button';
     tile.className = 'fragment ' + id;
     tile.layout = layout;
-    if (!isMediaFolder) tile.heading = headings[index % headings.length];
+    if (panel) tile.heading = panel.querySelector('h2');
     for (const key of ['width', 'height']) tile.style.setProperty('--' + key, layout[key] + 'px');
     tile.style.setProperty('--angle', layout.angle + 'deg');
     tile.style.setProperty('--yaw', layout.yaw + 'deg');
     tile.style.setProperty('--shade', 1 - Math.max(0, layout.depth) / 1050);
     tile.style.zIndex = 500 - layout.depth;
     tile.style.setProperty('--filter', `grayscale(1)`);
-    if (isLocked) {
-      tile.classList.add('locked-case');
-      tile.append(document.querySelector('#case-lock').content.cloneNode(true));
-    } else if (isMediaFolder) {
+    if (isMediaFolder) {
       tile.classList.add('concepts');
       tile.dataset.conceptIndex = index;
       tile.setAttribute('aria-haspopup', 'dialog');
       tile.append(makeConceptMedia(index, true));
       tile.style.setProperty('--sway-delay', `-${index * .83}s`);
-      tile.addEventListener('pointermove', event => {
-        if (event.pointerType !== 'mouse' || event.buttons || reducedMotion.matches) return;
-        const rect = tile.getBoundingClientRect();
-        tile.style.setProperty('--pitch', `${(0.5 - (event.clientY - rect.top) / rect.height) * 12}deg`);
-        tile.style.setProperty('--turn', `${((event.clientX - rect.left) / rect.width - 0.5) * 12}deg`);
-      });
-      tile.addEventListener('pointerleave', () => {
-        tile.style.removeProperty('--pitch');
-        tile.style.removeProperty('--turn');
-      });
     } else {
-      const artwork = document.createElement('span');
-      artwork.className = 'art';
+      const cover = panel.id === 'panel-savings';
+      const artwork = document.createElement(cover ? 'figure' : 'span');
       artwork.setAttribute('aria-hidden', 'true');
+      if (cover) {
+        artwork.className = 'savings-cover';
+        const image = new Image(2048, 1452);
+        image.src = 'savings/project-card.webp';
+        image.alt = '';
+        image.decoding = 'async';
+        artwork.append(image);
+      } else {
+        artwork.className = 'case-card-wire';
+        artwork.append(document.createElement('i'), document.createElement('i'), document.createElement('i'));
+      }
+      tile.classList.add('case-card');
       tile.append(artwork, document.createElement('span'));
     }
+    tile.addEventListener('pointermove', event => {
+      if (event.pointerType !== 'mouse' || event.buttons || reducedMotion.matches) return;
+      const rect = tile.getBoundingClientRect();
+      tile.style.setProperty('--pitch', `${(0.5 - (event.clientY - rect.top) / rect.height) * 12}deg`);
+      tile.style.setProperty('--turn', `${((event.clientX - rect.left) / rect.width - 0.5) * 12}deg`);
+    });
+    tile.addEventListener('pointerleave', () => {
+      tile.style.removeProperty('--pitch');
+      tile.style.removeProperty('--turn');
+    });
     tile.addEventListener('click', event => {
-      if (isLocked || (event.detail && moved)) return;
+      if (event.detail && moved) return;
       if (isMediaFolder) {
         conceptTrigger = tile;
         const card = viewerCardFrame(tile);
@@ -275,13 +265,10 @@ function openFolder(button) {
 }
 
 function backToSpace() {
+  caseNavigation.hidden = true;
   document.body.classList.remove('case-mode');
   reading.hidden = true;
-  const caseFolder = casePanels[caseIndex]?.id.replace('panel-', '');
-  if (caseFolder && caseFolder !== folder.dataset.folder) {
-    openFolder(folderButtons.find(button => button.dataset.folder === caseFolder));
-    return;
-  }
+  caseBack.hidden = true;
   space.hidden = false;
   window.scrollTo(0, 0);
   if (fragment.hidden) fit();
@@ -780,7 +767,7 @@ foldersButton.addEventListener('click', () => {
   showHome('projects');
   folder.focus({ preventScroll: true });
 });
-document.querySelector('#back').addEventListener('click', backToSpace);
+caseBack.addEventListener('click', backToSpace);
 document.querySelector('#zoom-out').addEventListener('click', () => fly(-260));
 document.querySelector('#zoom-in').addEventListener('click', () => fly(260));
 
@@ -1005,7 +992,7 @@ window.addEventListener('resize', () => { if (!space.hidden) fit(); });
 
 function turnCase(direction) {
   const next = casePanels[caseIndex + direction];
-  if (next) openFragment(fragment, next, next.querySelector('h2'));
+  if (next) openFragment(world.children[caseIndex + direction], next, next.querySelector('h2'));
 }
 
 previousCase.addEventListener('click', () => turnCase(-1));
@@ -1148,7 +1135,12 @@ const conceptProject = conceptViewer.querySelector('.concept-project');
 let conceptFiles;
 let conceptLayouts;
 const mediaLayouts = { concepts: [
-  ...layouts,
+  { x: 130, y: 178, width: 240, height: 175, angle: -11, depth: -125, yaw: 15 },
+  { x: 465, y: 88, width: 245, height: 170, angle: 8, depth: 1190, yaw: -19 },
+  { x: 853, y: 188, width: 237, height: 246, angle: -8, depth: 330, yaw: -21 },
+  { x: 171, y: 470, width: 256, height: 171, angle: 6, depth: 710, yaw: 21 },
+  { x: 460, y: 342, width: 210, height: 245, angle: 3, depth: 0, yaw: -9 },
+  { x: 820, y: 505, width: 245, height: 148, angle: 9, depth: -95, yaw: -18 },
   { x: 250, y: 290, width: 230, height: 148, angle: -5, depth: 435, yaw: 15 },
   { x: 660, y: 440, width: 210, height: 182, angle: 7, depth: 900, yaw: -11 },
   { x: 667, y: 160, width: 145, height: 222, angle: -4, depth: 620, yaw: -14 }
@@ -1156,6 +1148,8 @@ const mediaLayouts = { concepts: [
   { x: 340, y: 330, width: 280, height: 210, angle: -5, depth: 0, yaw: 12 },
   { x: 710, y: 295, width: 160, height: 235, angle: 6, depth: 160, yaw: -12 }
 ] };
+
+const compactFolderX = x => 500 + (x - 500) * .74;
 
 function selectMediaFolder(id) {
   conceptFiles = [...document.querySelector(`#${id}-files`).content.children];
@@ -1165,7 +1159,7 @@ function selectMediaFolder(id) {
     const isConcept = id === 'concepts';
     const size = scale * (isConcept ? 1.52 : 1);
     return {
-      ...layout, x: 500 + (layout.x - 500) * (isConcept ? .59 : .74),
+      ...layout, x: isConcept ? 500 + (layout.x - 500) * .59 : compactFolderX(layout.x),
       y: isConcept ? 320 + (layout.y - 320) * .92 : layout.y,
       width: width * size, height: height * size
     };
@@ -1229,23 +1223,23 @@ conceptViewer.addEventListener('cancel', event => {
   closeConcept();
 });
 
-function resetConceptParallax() {
+function resetFolderParallax() {
   world.style.removeProperty('--cursor-x');
   world.style.removeProperty('--cursor-y');
 }
 
 camera.addEventListener('pointermove', event => {
-  if (!world.classList.contains('concept-world') || event.pointerType !== 'mouse' || reducedMotion.matches) return;
+  if (event.pointerType !== 'mouse' || reducedMotion.matches) return;
   if (event.buttons) {
-    resetConceptParallax();
+    resetFolderParallax();
     return;
   }
   const bounds = camera.getBoundingClientRect();
   world.style.setProperty('--cursor-x', `${(0.5 - (event.clientX - bounds.left) / bounds.width) * 30}px`);
   world.style.setProperty('--cursor-y', `${(0.5 - (event.clientY - bounds.top) / bounds.height) * 22}px`);
 });
-camera.addEventListener('pointerleave', resetConceptParallax);
-camera.addEventListener('pointerdown', resetConceptParallax);
+camera.addEventListener('pointerleave', resetFolderParallax);
+camera.addEventListener('pointerdown', resetFolderParallax);
 
 let conceptZoom = 1;
 const conceptZoomButtons = [...conceptViewer.querySelectorAll('[data-concept-zoom]')];
