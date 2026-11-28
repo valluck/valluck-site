@@ -1,13 +1,14 @@
-(() => {
-  const savings = document.querySelector('#panel-savings');
-  const carousel = savings.querySelector('.savings-carousel');
-  const screenButtons = [...savings.querySelectorAll('.savings-screen')];
-  const viewer = savings.querySelector('.savings-viewer');
-  const enlarged = viewer.querySelector('img');
+function setupCaseGallery(casePanel, featuredIds) {
+  const carousel = casePanel.querySelector('.savings-carousel');
+  const screenButtons = [...casePanel.querySelectorAll('.savings-screen')];
+  const viewer = casePanel.querySelector('.savings-viewer');
+  const enlargedImage = viewer.querySelector('img');
+  const wirePreview = viewer.querySelector('.booking-view-media');
   const caption = viewer.querySelector('figcaption');
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
-  const featuredScreens = ['05', '13', '23', '24', '25']
-    .map(id => screenButtons.findIndex(screen => screen.dataset.screen === id));
+  const featuredScreens = featuredIds
+    ? featuredIds.map(id => screenButtons.findIndex(screen => screen.dataset.screen === id))
+    : screenButtons.map((_, index) => index);
   const count = featuredScreens.length;
 
   let position = 0;
@@ -20,7 +21,8 @@
   let opener;
 
   const wrap = value => ((value % count) + count) % count;
-  const screenName = index => screenButtons[index].querySelector('span').textContent.trim();
+  const screenMedia = button => button.firstElementChild;
+  const screenName = index => screenButtons[index].lastElementChild.textContent.trim();
 
   const cards = featuredScreens.map(index => {
     const screen = screenButtons[index];
@@ -28,8 +30,7 @@
     button.type = 'button';
     button.className = 'savings-carousel-button';
     button.setAttribute('aria-haspopup', 'dialog');
-    const image = screen.querySelector('img').cloneNode();
-    button.append(image);
+    button.append(screenMedia(screen).cloneNode(true));
     button.addEventListener('click', () => showViewer(index, button));
     button.addEventListener('keydown', event => {
       const direction = event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : 0;
@@ -86,26 +87,36 @@
   }
 
   function updateLabels() {
-    cards.forEach((card, index) => card.setAttribute('aria-label', screenName(featuredScreens[index])));
-    if (viewer.open) caption.textContent = screenName(activeScreen);
+    cards.forEach((card, index) => {
+      const screen = featuredScreens[index];
+      card.setAttribute('aria-label', screenName(screen));
+      if (wirePreview) card.replaceChildren(screenMedia(screenButtons[screen]).cloneNode(true));
+    });
+    if (viewer.open) updateViewer(activeScreen);
   }
 
   function updateViewer(index) {
     activeScreen = (index + screenButtons.length) % screenButtons.length;
-    const image = screenButtons[activeScreen].querySelector('img');
-    enlarged.src = image.src;
+    const media = screenMedia(screenButtons[activeScreen]);
+    if (enlargedImage) enlargedImage.src = media.src;
+    if (wirePreview) {
+      const preview = media.cloneNode(true);
+      preview.removeAttribute('aria-hidden');
+      wirePreview.replaceChildren(preview);
+    }
     caption.textContent = screenName(activeScreen);
   }
 
   function showViewer(index, button) {
     opener = button;
-    const from = button.querySelector('img').getBoundingClientRect();
+    const from = screenMedia(button).getBoundingClientRect();
     cancelAnimationFrame(frame);
     frame = 0;
     lastFrame = 0;
     updateViewer(index);
     viewer.showModal();
     if (motion.matches) return;
+    const enlarged = enlargedImage ?? wirePreview.firstElementChild;
     const to = enlarged.getBoundingClientRect();
     const dx = from.left + from.width / 2 - (to.left + to.width / 2);
     const dy = from.top + from.height / 2 - (to.top + to.height / 2);
@@ -174,7 +185,7 @@
     reel.toggleAttribute('data-fade-right', reel.scrollLeft < reel.scrollWidth - reel.clientWidth - 2);
   }
 
-  for (const reel of savings.querySelectorAll('.savings-reel')) {
+  for (const reel of casePanel.querySelectorAll('.savings-reel')) {
     let swipe;
     let movedAt = -Infinity;
     reelObserver.observe(reel);
@@ -207,4 +218,7 @@
       if (button && performance.now() - movedAt >= 180) showViewer(screenButtons.indexOf(button), button);
     });
   }
-})();
+}
+
+setupCaseGallery(document.querySelector('#panel-savings'), ['05', '13', '23', '24', '25']);
+setupCaseGallery(document.querySelector('#panel-booking'));

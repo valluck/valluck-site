@@ -219,7 +219,7 @@ html:has(.case-mode #panel-savings:not([hidden]))::-webkit-scrollbar,
   cursor: zoom-in;
 }
 .savings-screen:hover { background: transparent; }
-.savings-screen > span {
+.savings-screen > span:not(.wire-phone) {
   position: absolute;
   width: 1px;
   height: 1px;

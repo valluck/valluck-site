@@ -248,3 +248,48 @@
   .wire-stage.wire-pair { grid-template-columns: repeat(auto-fit, minmax(min(128px, 100%), 1fr)); }
   .wire-phone { min-height: 205px; }
 }
+
+.booking-locked {
+  display: grid;
+  place-items: center;
+  min-height: clamp(150px, 28vw, 270px);
+  grid-template-columns: none;
+}
+.booking-lock {
+  position: relative;
+  width: 30px;
+  height: 24px;
+  margin-top: 14px;
+  border: 2px solid #aaa;
+  border-radius: 6px;
+}
+.booking-lock::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 14px;
+  left: 5px;
+  bottom: 100%;
+  border: 2px solid #aaa;
+  border-bottom: 0;
+  border-radius: 9px 9px 0 0;
+}
+#panel-booking {
+  --savings-inset: clamp(10px, 3vw, 36px);
+}
+#panel-booking .savings-carousel {
+  height: calc(var(--phone-width) * 1.55 + 48px);
+}
+#panel-booking .wire-phone {
+  aspect-ratio: 1 / 1.55;
+  text-align: start;
+  pointer-events: none;
+}
+.booking-view-media {
+  width: min(80vw, 300px);
+}
+.booking-view-media .wire-phone {
+  max-height: calc(100dvh - 125px);
+  overflow: auto;
+  pointer-events: auto;
+}
